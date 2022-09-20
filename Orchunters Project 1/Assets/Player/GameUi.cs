@@ -17,6 +17,7 @@ public class GameUi : MonoBehaviour
     [SerializeField] private TextMeshProUGUI health;
     [SerializeField] private TextMeshProUGUI damage;
     [SerializeField] private TextMeshProUGUI actionpoint;
+    private object currentPlayerIndex;
 
     private void Start()
     {
@@ -27,7 +28,8 @@ public class GameUi : MonoBehaviour
     public void OnButtonPressed()
         {
 
-        TurnManager.GetInstance().ChangeTurn();
+         TurnManager.GetInstance().TriggerChangeTurn();
+        Debug.Log(currentPlayerIndex);
 
         }
 

@@ -741,7 +741,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerIndex: 1
-  unitIndex: 0
+  unitIndex: 1
 --- !u!54 &370070236
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -812,9 +812,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 303640af88fa7694c979fe93f90a2fde, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player1Unit1Health: 100
-  player1Unit1Damage: 10
-  plyer1Unit1Actionpoints: 100
+  Unit1Health: 100
+  Unit1Damage: 10
+  Unit1Actionpoints: 100
 --- !u!114 &370070242
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -853,8 +853,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd805e1c4c07d7f4e8bbebb8829c3a23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectilePrefab: {fileID: 8862330202254225283, guid: 076e844ef1dbe164aa90e54440b52b71, type: 3}
+  playerTurn: {fileID: 370070247}
+  projectilePrefab: {fileID: 2309833223975065420, guid: 6e7a8aba63219664c8e8bf22109bf56b, type: 3}
   shootingStartPosition: {fileID: 1084947810}
+--- !u!114 &370070247
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 370070233}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4fd0640dbeb9afa4ab9d111c4621622b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &413036733
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1325,6 +1338,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd805e1c4c07d7f4e8bbebb8829c3a23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerTurn: {fileID: 552195290}
   projectilePrefab: {fileID: 8862330202254225283, guid: 076e844ef1dbe164aa90e54440b52b71, type: 3}
   shootingStartPosition: {fileID: 304616244}
 --- !u!114 &552195283
@@ -1351,9 +1365,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 303640af88fa7694c979fe93f90a2fde, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player1Unit1Health: 100
-  player1Unit1Damage: 10
-  plyer1Unit1Actionpoints: 100
+  Unit1Health: 100
+  Unit1Damage: 10
+  Unit1Actionpoints: 100
 --- !u!114 &552195285
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1440,6 +1454,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 90
   m_CollisionDetection: 0
+--- !u!114 &552195290
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 552195280}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4fd0640dbeb9afa4ab9d111c4621622b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &601465472
 GameObject:
   m_ObjectHideFlags: 0
@@ -2763,14 +2789,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1084947809}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0, y: 1.118, z: 1.178}
+  m_LocalRotation: {x: -0.29346398, y: -0, z: 0.0000000074505815, w: 0.95597017}
+  m_LocalPosition: {x: 0, y: 1.118, z: 1.178}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 370070234}
   m_RootOrder: 30
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -34.131, y: 0, z: 0}
 --- !u!1001 &1102059041
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3240,8 +3266,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f9aac096994cf049ba1df5c2ae1b780, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentPlayerIndex: 1
-  currentUnitIndex: 1
+  playerOne: {fileID: 370070247}
+  playerTwo: {fileID: 1534956497}
+  playerthree: {fileID: 1950131730}
+  playerfour: {fileID: 552195290}
+  timeBetweenTurns: 30
 --- !u!4 &1311470718
 Transform:
   m_ObjectHideFlags: 0
@@ -3761,6 +3790,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd805e1c4c07d7f4e8bbebb8829c3a23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerTurn: {fileID: 1534956497}
   projectilePrefab: {fileID: 8862330202254225283, guid: 076e844ef1dbe164aa90e54440b52b71, type: 3}
   shootingStartPosition: {fileID: 1662841814}
 --- !u!114 &1534956490
@@ -3787,9 +3817,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 303640af88fa7694c979fe93f90a2fde, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player1Unit1Health: 100
-  player1Unit1Damage: 10
-  plyer1Unit1Actionpoints: 100
+  Unit1Health: 100
+  Unit1Damage: 10
+  Unit1Actionpoints: 100
 --- !u!114 &1534956492
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3876,6 +3906,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 90
   m_CollisionDetection: 0
+--- !u!114 &1534956497
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1534956487}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4fd0640dbeb9afa4ab9d111c4621622b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1610716186
 GameObject:
   m_ObjectHideFlags: 0
@@ -4320,6 +4362,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd805e1c4c07d7f4e8bbebb8829c3a23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerTurn: {fileID: 1950131730}
   projectilePrefab: {fileID: 8862330202254225283, guid: 076e844ef1dbe164aa90e54440b52b71, type: 3}
   shootingStartPosition: {fileID: 1983581497}
 --- !u!114 &1950131723
@@ -4346,9 +4389,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 303640af88fa7694c979fe93f90a2fde, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player1Unit1Health: 100
-  player1Unit1Damage: 10
-  plyer1Unit1Actionpoints: 100
+  Unit1Health: 100
+  Unit1Damage: 10
+  Unit1Actionpoints: 100
 --- !u!114 &1950131725
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4435,6 +4478,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 90
   m_CollisionDetection: 0
+--- !u!114 &1950131730
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1950131720}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4fd0640dbeb9afa4ab9d111c4621622b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1968647464
 GameObject:
   m_ObjectHideFlags: 0

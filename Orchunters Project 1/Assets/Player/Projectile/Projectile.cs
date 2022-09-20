@@ -7,12 +7,22 @@ public class Projectile : MonoBehaviour
 
     [SerializeField] private float speed;
     [SerializeField] private Rigidbody projectileBody;
-    private bool isActive;
+    [SerializeField] private GameObject damageIndicatorsPrefab;
 
-    public void Initialize()
+
+    private bool isActive;
+    private Rigidbody rb;
+
+
+    private void Start()
+    {
+        rb = GetComponent<Rigidbody>();
+    }
+
+    public void Initialize(Vector3 direction)
     {
         isActive = true;
-        projectileBody.AddForce((transform.forward * 400f + transform.up * -40f ));
+        projectileBody.AddForce(direction);        
     }
 
 
@@ -21,14 +31,17 @@ public class Projectile : MonoBehaviour
     {
         if (isActive)
         {
-           
+            gameObject.transform.rotation = Quaternion.LookRotation(rb.velocity);
         }
     }
     
     private void OnCollisionEnter(Collision collision)
     {
-        GameObject collisionObject = collision.gameObject;
-        
+        Destroy(this.gameObject);
+        GameObject damageIndicator = Instantiate(damageIndicatorsPrefab);
+        damageIndicator.transform.position = collision.GetContact(0).point;
+
+
     }
 
 

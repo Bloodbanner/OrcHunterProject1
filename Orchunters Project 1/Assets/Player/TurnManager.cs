@@ -4,27 +4,51 @@ using UnityEngine;
 
 public class TurnManager : MonoBehaviour
 {
-    public static TurnManager instance;
+    private static TurnManager instance;
+    [SerializeField] private PlayerTurn playerOne;
+    [SerializeField] private PlayerTurn playerTwo;
+    [SerializeField] private PlayerTurn playerthree;
+    [SerializeField] private PlayerTurn playerfour;
+    [SerializeField] private float timeBetweenTurns;
 
-    public int currentPlayerIndex;
-    public int currentUnitIndex;
-
+    private int currentPlayerIndex;
+    private bool waitingForNextTurn;
+    private float turnDelay;
 
     private void Awake()
     {
         if (instance == null)
-
         {
             instance = this;
             currentPlayerIndex = 1;
-            currentUnitIndex = 1;
+            playerOne.SetPlayerTurn(1);
+            playerTwo.SetPlayerTurn(2);
+            playerthree.SetPlayerTurn(3);
+            playerfour.SetPlayerTurn(4);
         }
+    }
 
+    private void Update()
+    {
+        if (waitingForNextTurn)
+        {
+            turnDelay += Time.deltaTime;
+            if (turnDelay >= timeBetweenTurns)
+            {
+                turnDelay = 60;
+                waitingForNextTurn = false;
+                ChangeTurn();
+            }
+        }
     }
 
     public bool IsItPlayerTurn(int index)
-
     {
+        if (waitingForNextTurn)
+        {
+            return false;
+        }
+
         return index == currentPlayerIndex;
     }
 
@@ -33,7 +57,12 @@ public class TurnManager : MonoBehaviour
         return instance;
     }
 
-    public void ChangeTurn()
+    public void TriggerChangeTurn()
+    {
+        waitingForNextTurn = true;
+    }
+
+    private void ChangeTurn()
     {
         if (currentPlayerIndex == 1)
         {
@@ -56,8 +85,6 @@ public class TurnManager : MonoBehaviour
 
 
 
+
     }
-
-
-
 }

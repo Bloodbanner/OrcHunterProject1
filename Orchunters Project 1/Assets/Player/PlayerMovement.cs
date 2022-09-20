@@ -20,31 +20,36 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         if(TurnManager.GetInstance().IsItPlayerTurn(playerIndex))
+        { 
+                   
+            if (Input.GetKey(KeyCode.W))
+        
+            {
+            this.transform.Translate(Vector3.forward * 5f * Time.deltaTime);       
+            }
 
+                    
+            if (Input.GetKey(KeyCode.S))
+        
+            {
+            this.transform.Translate(Vector3.back * 5f * Time.deltaTime);       
+            }
 
-
-
-        if (Input.GetKey(KeyCode.W))
-        {
-            this.transform.Translate(Vector3.forward * 5f * Time.deltaTime);
-        }
-
-        if (Input.GetKey(KeyCode.S))
-        {
-            this.transform.Translate(Vector3.back * 5f * Time.deltaTime);
-        }
-
-        if (Input.GetKey(KeyCode.A))
-        {
-            this.transform.Rotate(Vector3.up, -0.5f);
-        }
-
-        if (Input.GetKey(KeyCode.D))
-        {
-            this.transform.Rotate(Vector3.up, 0.5f);
-        }
+        
+            if (Input.GetKey(KeyCode.A))
+       
+            {
+            this.transform.Rotate(Vector3.up, -0.5f);       
+            }
 
        
+            if (Input.GetKey(KeyCode.D))   
+                
+            {       
+                this.transform.Rotate(Vector3.up, 0.5f);       
+            }
+
+        }
         
     }
      
