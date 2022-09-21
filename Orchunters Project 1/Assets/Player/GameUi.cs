@@ -17,21 +17,40 @@ public class GameUi : MonoBehaviour
     [SerializeField] private TextMeshProUGUI health;
     [SerializeField] private TextMeshProUGUI damage;
     [SerializeField] private TextMeshProUGUI actionpoint;
+    [SerializeField] public int unitSelected;
     private object currentPlayerIndex;
 
     private void Start()
     {
-        endTurnButton.onClick.AddListener(OnButtonPressed);
+        endTurnButton.onClick.AddListener(EndTurnButtonPressed);
+        unit1Button.onClick.AddListener(Unit1ButtonPressed);
+        unit2Button.onClick.AddListener(Unit2ButtonPressed);
+        unit3Button.onClick.AddListener(Unit3ButtonPressed);
     }
 
 
-    public void OnButtonPressed()
+
+
+    public void EndTurnButtonPressed()
         {
 
          TurnManager.GetInstance().TriggerChangeTurn();
         Debug.Log(currentPlayerIndex);
 
         }
+    public void Unit1ButtonPressed()
+    {
+       unitSelected = unitSelected = 1;
+        
+    }
+    public void Unit2ButtonPressed()
+    {
+        unitSelected = unitSelected = 2;
+    }
+    public void Unit3ButtonPressed()
+    {
+        unitSelected = unitSelected = 3;
+    }
 
 
 
@@ -39,10 +58,10 @@ public class GameUi : MonoBehaviour
 
 
 
-
-
-
-
+    public void Update()
+    {
+        
+    }
 
 
 

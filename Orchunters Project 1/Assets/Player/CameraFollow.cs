@@ -1,29 +1,31 @@
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Cinemachine;
 
-public class CameraFollow : MonoBehaviour
+public class PlayerSpawner : MonoBehaviour
 {
+    [SerializeField] private GameObject playerPrefab = null;
+    [SerializeField] private CinemachineFreeLook playerCamera = null;
 
-    public Transform target;
-
-    public float smoothSpeed = 0.125f;
-    public Vector3 offset; 
-
-    private void FixedUpdate()
+    private void Start()
     {
-        Vector3 desiredPostion = target.position + offset;
-        Vector3 smoothedPostion = Vector3.Lerp(transform.position, desiredPostion, smoothSpeed);
-        transform.position = smoothedPostion;
+        
+        //connect Cinemachine
+       
+        
+    }
 
-        transform.LookAt(target);
+    private void Update()
+    {
+        
     }
 
 
-
-
-
-
-
-
 }
+     
+
+    
+
+

@@ -11,6 +11,7 @@ public class TurnManager : MonoBehaviour
     [SerializeField] private PlayerTurn playerfour;
     [SerializeField] private float timeBetweenTurns;
 
+    private bool turned;
     private int currentPlayerIndex;
     private bool waitingForNextTurn;
     private float turnDelay;
@@ -64,21 +65,26 @@ public class TurnManager : MonoBehaviour
 
     private void ChangeTurn()
     {
-        if (currentPlayerIndex == 1)
+        turned = false;
+        if (currentPlayerIndex == 1 && (turned == false))
         {
             currentPlayerIndex = 2;
+            turned = true;
         }
-        if (currentPlayerIndex == 2)
+        if (currentPlayerIndex == 2 && (turned == false))
         {
             currentPlayerIndex = 3;
+            turned = true;
         }
-        if (currentPlayerIndex == 3)
+        if (currentPlayerIndex == 3 && (turned == false))
         {
             currentPlayerIndex = 4;
+            turned = true;
         }
-        if (currentPlayerIndex == 4)
+        if (currentPlayerIndex == 4 && (turned == false))
         {
             currentPlayerIndex = 1;
+            turned = true;
         }
 
 

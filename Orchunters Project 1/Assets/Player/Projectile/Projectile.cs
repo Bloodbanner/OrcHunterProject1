@@ -11,30 +11,30 @@ public class Projectile : MonoBehaviour
 
 
     private bool isActive;
-    private Rigidbody rb;
-
+    
 
     private void Start()
     {
-        rb = GetComponent<Rigidbody>();
+        projectileBody = GetComponent<Rigidbody>();
     }
 
     public void Initialize(Vector3 direction)
     {
         isActive = true;
-        projectileBody.AddForce(direction);        
+        projectileBody.AddForce(direction);
+        gameObject.transform.rotation = Quaternion.LookRotation(direction);
     }
-
 
     // Update is called once per frame
     void Update()
     {
-        if (isActive)
+        // MathF.Abs Will change the float if its a negative number to a positive. we just want to check if the number isn't 0.
+        if (isActive && (Mathf.Abs(projectileBody.velocity.x) > 0 || Mathf.Abs(projectileBody.velocity.y) > 0 || Mathf.Abs(projectileBody.velocity.z) > 0))
         {
-            gameObject.transform.rotation = Quaternion.LookRotation(rb.velocity);
+            gameObject.transform.rotation = Quaternion.LookRotation(projectileBody.velocity, Vector3.up);
         }
     }
-    
+
     private void OnCollisionEnter(Collision collision)
     {
         Destroy(this.gameObject);

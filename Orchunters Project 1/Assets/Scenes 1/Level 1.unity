@@ -335,6 +335,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 749663885}
+  - {fileID: 643705451}
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -565,6 +566,7 @@ MonoBehaviour:
   health: {fileID: 1968647466}
   damage: {fileID: 812472106}
   actionpoint: {fileID: 2092962623}
+  unitSelected: 0
 --- !u!1 &304616243
 GameObject:
   m_ObjectHideFlags: 0
@@ -595,6 +597,62 @@ Transform:
   m_Children: []
   m_Father: {fileID: 552195279}
   m_RootOrder: 30
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &339695642
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 339695644}
+  - component: {fileID: 339695643}
+  m_Layer: 0
+  m_Name: PlayerUnitCount
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &339695643
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 339695642}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: becd6f62a608155498310fc5cf4e7bf8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  endtextbutton: {fileID: 0}
+  unit1: {fileID: 0}
+  unit2: {fileID: 0}
+  unit3: {fileID: 0}
+  endTurnButton: {fileID: 0}
+  unit1Button: {fileID: 0}
+  unit2Button: {fileID: 0}
+  unit3Button: {fileID: 0}
+  health: {fileID: 0}
+  damage: {fileID: 0}
+  actionpoint: {fileID: 0}
+  unitSelected: 0
+--- !u!4 &339695644
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 339695642}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 16.341024, y: 3.837564, z: 15.994535}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &347278429
 GameObject:
@@ -812,9 +870,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 303640af88fa7694c979fe93f90a2fde, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Unit1Health: 100
-  Unit1Damage: 10
-  Unit1Actionpoints: 100
+  UnitHealth: 100
+  UnitDamage: 10
+  UnitActionpoints: 100
 --- !u!114 &370070242
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -856,6 +914,7 @@ MonoBehaviour:
   playerTurn: {fileID: 370070247}
   projectilePrefab: {fileID: 2309833223975065420, guid: 6e7a8aba63219664c8e8bf22109bf56b, type: 3}
   shootingStartPosition: {fileID: 1084947810}
+  ui: {fileID: 0}
 --- !u!114 &370070247
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1323,9 +1382,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7748a0a6b2e72e84aafa90597982c711, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 552195279}
-  smoothSpeed: 0.125
-  offset: {x: 0, y: 0, z: 0}
 --- !u!114 &552195282
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1339,8 +1395,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerTurn: {fileID: 552195290}
-  projectilePrefab: {fileID: 8862330202254225283, guid: 076e844ef1dbe164aa90e54440b52b71, type: 3}
+  projectilePrefab: {fileID: 2309833223975065420, guid: 6e7a8aba63219664c8e8bf22109bf56b, type: 3}
   shootingStartPosition: {fileID: 304616244}
+  ui: {fileID: 0}
 --- !u!114 &552195283
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1365,9 +1422,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 303640af88fa7694c979fe93f90a2fde, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Unit1Health: 100
-  Unit1Damage: 10
-  Unit1Actionpoints: 100
+  UnitHealth: 100
+  UnitDamage: 10
+  UnitActionpoints: 100
 --- !u!114 &552195285
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1697,7 +1754,7 @@ Transform:
   - {fileID: 2109345443}
   - {fileID: 1102059042}
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 317.55, z: 0}
 --- !u!1 &643705450
 GameObject:
@@ -1730,8 +1787,8 @@ Transform:
   - {fileID: 370070234}
   - {fileID: 982680215}
   - {fileID: 1247806011}
-  m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_Father: {fileID: 45761868}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 53.894, z: 0}
 --- !u!1 &648948288
 GameObject:
@@ -2461,7 +2518,7 @@ Transform:
   - {fileID: 1903018894}
   - {fileID: 438129644}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 136.66, z: 0}
 --- !u!1 &963194225
 GameObject:
@@ -3270,7 +3327,7 @@ MonoBehaviour:
   playerTwo: {fileID: 1534956497}
   playerthree: {fileID: 1950131730}
   playerfour: {fileID: 552195290}
-  timeBetweenTurns: 30
+  timeBetweenTurns: 0
 --- !u!4 &1311470718
 Transform:
   m_ObjectHideFlags: 0
@@ -3284,7 +3341,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1346918873
 GameObject:
@@ -3463,7 +3520,7 @@ Transform:
   - {fileID: 1499364498}
   - {fileID: 413036734}
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 227.586, z: 0}
 --- !u!1001 &1499364497
 PrefabInstance:
@@ -3775,9 +3832,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7748a0a6b2e72e84aafa90597982c711, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 1534956486}
-  smoothSpeed: 0.125
-  offset: {x: 0, y: 0, z: 0}
 --- !u!114 &1534956489
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3791,8 +3845,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerTurn: {fileID: 1534956497}
-  projectilePrefab: {fileID: 8862330202254225283, guid: 076e844ef1dbe164aa90e54440b52b71, type: 3}
+  projectilePrefab: {fileID: 2309833223975065420, guid: 6e7a8aba63219664c8e8bf22109bf56b, type: 3}
   shootingStartPosition: {fileID: 1662841814}
+  ui: {fileID: 0}
 --- !u!114 &1534956490
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3817,9 +3872,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 303640af88fa7694c979fe93f90a2fde, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Unit1Health: 100
-  Unit1Damage: 10
-  Unit1Actionpoints: 100
+  UnitHealth: 100
+  UnitDamage: 10
+  UnitActionpoints: 100
 --- !u!114 &1534956492
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4005,6 +4060,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1635812884}
   - component: {fileID: 1635812883}
+  - component: {fileID: 1635812885}
   m_Layer: 0
   m_Name: CM vcam1
   m_TagString: Untagged
@@ -4066,6 +4122,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 10, y: 0, z: 0}
+--- !u!114 &1635812885
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1635812882}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7748a0a6b2e72e84aafa90597982c711, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1662841813
 GameObject:
   m_ObjectHideFlags: 0
@@ -4347,9 +4415,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7748a0a6b2e72e84aafa90597982c711, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 1950131719}
-  smoothSpeed: 0.125
-  offset: {x: 0, y: 0, z: 0}
 --- !u!114 &1950131722
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4363,8 +4428,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerTurn: {fileID: 1950131730}
-  projectilePrefab: {fileID: 8862330202254225283, guid: 076e844ef1dbe164aa90e54440b52b71, type: 3}
+  projectilePrefab: {fileID: 2309833223975065420, guid: 6e7a8aba63219664c8e8bf22109bf56b, type: 3}
   shootingStartPosition: {fileID: 1983581497}
+  ui: {fileID: 0}
 --- !u!114 &1950131723
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4389,9 +4455,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 303640af88fa7694c979fe93f90a2fde, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Unit1Health: 100
-  Unit1Damage: 10
-  Unit1Actionpoints: 100
+  UnitHealth: 100
+  UnitDamage: 10
+  UnitActionpoints: 100
 --- !u!114 &1950131725
 MonoBehaviour:
   m_ObjectHideFlags: 0
