@@ -13,9 +13,9 @@ public class GameUi : MonoBehaviour
     [SerializeField] private Sprite Player4flag;
     [SerializeField] private Image playerTurnFlag;
     [SerializeField] private Image endtextbutton;
-    [SerializeField] private Image unit1;
-    [SerializeField] private Image unit2;
-    [SerializeField] private Image unit3;
+    [SerializeField] private Sprite unit1Dead;
+    [SerializeField] private Sprite unit2Dead;
+    [SerializeField] private Sprite unit3Dead;
     [SerializeField] private Button endTurnButton;
     [SerializeField] private Button unit1Button;
     [SerializeField] private Button unit2Button;
@@ -81,13 +81,15 @@ public class GameUi : MonoBehaviour
         TurnManager.GetInstance().TriggerChangeTurn();
 
         playerturnint++;
-       
-        if (playerturnint >=5)
+
+        if (playerturnint >= 5)
         {
             playerturnint = 1;
         }
-        UnitButtonPressed(1);
 
+        
+        UnitButtonPressed(1);
+        UnitButtonPressed(1);
         ImageChange();
         
     }

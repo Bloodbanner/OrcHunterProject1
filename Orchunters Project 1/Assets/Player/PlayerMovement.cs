@@ -24,6 +24,7 @@ public class PlayerMovement : MonoBehaviour
             if (Input.GetKey(KeyCode.W))
             {
                 this.transform.Translate(Vector3.forward * 5f * Time.deltaTime);
+                
             }
 
             if (Input.GetKey(KeyCode.S))
@@ -40,7 +41,7 @@ public class PlayerMovement : MonoBehaviour
             {
                 this.transform.Rotate(Vector3.up, 0.5f);
             }
-
+            
         }
     }
 }

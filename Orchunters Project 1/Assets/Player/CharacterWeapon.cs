@@ -9,6 +9,9 @@ public class CharacterWeapon : MonoBehaviour
     [SerializeField] private GameObject projectilePrefab;
     [SerializeField] private Transform shootingStartPosition;
     public GameUi ui;
+
+
+    [SerializeField] private Animator animator;
     private void Update()
     {
 
@@ -20,7 +23,7 @@ public class CharacterWeapon : MonoBehaviour
                 Vector3 force = transform.forward * 500f + transform.up * 100f;
                 GameObject newProjectile = Instantiate(projectilePrefab, shootingStartPosition.position, Quaternion.Euler(force));
                 newProjectile.GetComponent<Projectile>().Initialize(force);
-
+                animator.SetTrigger("Attack");
             }
     }
 

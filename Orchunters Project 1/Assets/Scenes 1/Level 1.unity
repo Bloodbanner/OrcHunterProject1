@@ -335,7 +335,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 749663885}
-  - {fileID: 643705451}
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -714,9 +713,9 @@ MonoBehaviour:
   Player4flag: {fileID: 21300000, guid: f5c722b8329feb841a79aae8df5f8818, type: 3}
   playerTurnFlag: {fileID: 601465474}
   endtextbutton: {fileID: 0}
-  unit1: {fileID: 0}
-  unit2: {fileID: 0}
-  unit3: {fileID: 0}
+  unit1Dead: {fileID: 21300000, guid: f33f131fe6a0c5a409f37c5ec49d2a37, type: 3}
+  unit2Dead: {fileID: 21300000, guid: f33f131fe6a0c5a409f37c5ec49d2a37, type: 3}
+  unit3Dead: {fileID: 21300000, guid: f33f131fe6a0c5a409f37c5ec49d2a37, type: 3}
   endTurnButton: {fileID: 605175897}
   unit1Button: {fileID: 1732274980}
   unit2Button: {fileID: 2027548226}
@@ -923,6 +922,7 @@ MonoBehaviour:
   projectilePrefab: {fileID: 2309833223975065420, guid: 6e7a8aba63219664c8e8bf22109bf56b, type: 3}
   shootingStartPosition: {fileID: 1084947810}
   ui: {fileID: 0}
+  animator: {fileID: 370070248}
 --- !u!114 &370070247
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -935,6 +935,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4fd0640dbeb9afa4ab9d111c4621622b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!95 &370070248 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 5833755455666117179, guid: d8c6f65c212cd2943997e75862b6699b, type: 3}
+  m_PrefabInstance: {fileID: 415922654}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &413036733
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1032,6 +1037,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 581d62880c8e9744e96130a0e5d8204d, type: 2}
+    - target: {fileID: 5833755455666117179, guid: d8c6f65c212cd2943997e75862b6699b, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: de66781e4cc8bbe4a8a021118e6e9f75, type: 2}
     - target: {fileID: 5833755455673379213, guid: d8c6f65c212cd2943997e75862b6699b, type: 3}
       propertyPath: m_Name
       value: Player1Unit1
@@ -1540,6 +1549,7 @@ MonoBehaviour:
   projectilePrefab: {fileID: 2309833223975065420, guid: 6e7a8aba63219664c8e8bf22109bf56b, type: 3}
   shootingStartPosition: {fileID: 304616244}
   ui: {fileID: 0}
+  animator: {fileID: 0}
 --- !u!114 &552195283
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2068,7 +2078,7 @@ Transform:
   - {fileID: 2109345443}
   - {fileID: 1102059042}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 317.55, z: 0}
 --- !u!1 &643705450
 GameObject:
@@ -2101,8 +2111,8 @@ Transform:
   - {fileID: 370070234}
   - {fileID: 982680215}
   - {fileID: 1247806011}
-  m_Father: {fileID: 45761868}
-  m_RootOrder: 1
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 53.894, z: 0}
 --- !u!1 &648948288
 GameObject:
@@ -2735,7 +2745,7 @@ Transform:
   - {fileID: 1903018894}
   - {fileID: 438129644}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 136.66, z: 0}
 --- !u!1 &845697323
 GameObject:
@@ -3945,7 +3955,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1329668770 stripped
 GameObject:
@@ -4379,7 +4389,7 @@ Transform:
   - {fileID: 1499364498}
   - {fileID: 413036734}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 227.586, z: 0}
 --- !u!1 &1489374628 stripped
 GameObject:
@@ -5010,6 +5020,7 @@ MonoBehaviour:
   projectilePrefab: {fileID: 2309833223975065420, guid: 6e7a8aba63219664c8e8bf22109bf56b, type: 3}
   shootingStartPosition: {fileID: 1662841814}
   ui: {fileID: 0}
+  animator: {fileID: 0}
 --- !u!114 &1534956490
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6210,6 +6221,7 @@ MonoBehaviour:
   projectilePrefab: {fileID: 2309833223975065420, guid: 6e7a8aba63219664c8e8bf22109bf56b, type: 3}
   shootingStartPosition: {fileID: 1983581497}
   ui: {fileID: 0}
+  animator: {fileID: 0}
 --- !u!114 &1950131723
 MonoBehaviour:
   m_ObjectHideFlags: 0
