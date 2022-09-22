@@ -10,12 +10,12 @@ public class TurnManager : MonoBehaviour
     [SerializeField] private PlayerTurn playerthree;
     [SerializeField] private PlayerTurn playerfour;
     [SerializeField] private float timeBetweenTurns;
-
+  
     private bool turned;
     private int currentPlayerIndex;
     private bool waitingForNextTurn;
     private float turnDelay;
-
+    public int currentPlayerIndexscript;
     private void Awake()
     {
         if (instance == null)
@@ -41,6 +41,8 @@ public class TurnManager : MonoBehaviour
                 ChangeTurn();
             }
         }
+
+       
     }
 
     public bool IsItPlayerTurn(int index)
