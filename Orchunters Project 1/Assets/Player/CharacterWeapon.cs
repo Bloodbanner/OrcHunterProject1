@@ -15,7 +15,7 @@ public class CharacterWeapon : MonoBehaviour
         bool isPlayerTurn = playerTurn.IsPlayerTurn();
         if (Input.GetKeyDown(KeyCode.Mouse0))
             
-            if (isPlayerTurn==GameUi.unitselectd = 1)
+            if (isPlayerTurn)
             {
                 Vector3 force = transform.forward * 500f + transform.up * 100f;
                 GameObject newProjectile = Instantiate(projectilePrefab, shootingStartPosition.position, Quaternion.Euler(force));
