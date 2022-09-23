@@ -38,7 +38,7 @@ public class GameUi : MonoBehaviour
     [SerializeField] CinemachineVirtualCamera cameraplayer4unit1;
     [SerializeField] CinemachineVirtualCamera cameraplayer4unit2;
     [SerializeField] CinemachineVirtualCamera cameraplayer4unit3;
-    private int cameraInt = 1;
+    private int cameraInt = 0;
 
 
 
@@ -58,7 +58,7 @@ public class GameUi : MonoBehaviour
         unit1Button.onClick.AddListener(delegate { UnitButtonPressed(1); });
         unit2Button.onClick.AddListener(delegate { UnitButtonPressed(2); });
         unit3Button.onClick.AddListener(delegate { UnitButtonPressed(3); });
-        cameraplayer1unit1.m_Priority = cameraInt;
+        cameraplayer1unit1.m_Priority = cameraInt++;
         cameraplayer1unit2.m_Priority = cameraInt;
         cameraplayer1unit3.m_Priority = cameraInt;
         cameraplayer1unit1.m_Priority = cameraInt;

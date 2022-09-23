@@ -9,7 +9,7 @@ public class PlayerMovement : MonoBehaviour
     private int playerIndex;
     public int unitIndex;
     public GameUi gameUi;
-
+    [SerializeField] private Animator animatorRun;
     // Start is called before the first frame update  
     void Start()
     {
@@ -24,12 +24,21 @@ public class PlayerMovement : MonoBehaviour
             if (Input.GetKey(KeyCode.W))
             {
                 this.transform.Translate(Vector3.forward * 5f * Time.deltaTime);
-                
+                animatorRun.SetBool("Run", true);                
+            }
+            if (Input.GetKeyUp(KeyCode.W))
+            {
+                animatorRun.SetBool("Run", false);
             }
 
             if (Input.GetKey(KeyCode.S))
             {
                 this.transform.Translate(Vector3.back * 5f * Time.deltaTime);
+                animatorRun.SetBool("Back", true);
+            }
+            if (Input.GetKeyUp(KeyCode.S))
+            {
+                animatorRun.SetBool("Back", false);
             }
 
             if (Input.GetKey(KeyCode.A))

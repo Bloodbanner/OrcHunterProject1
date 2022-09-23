@@ -4,9 +4,26 @@ using UnityEngine;
 
 public class UnitStats : MonoBehaviour
 {
-    [SerializeField] public int UnitHealth = 100;
-    [SerializeField] public float UnitDamage = 10f;
-    [SerializeField] public int UnitActionpoints = 100;
+    [SerializeField] private int UnitMaxHealth = 100;
+    private int UnitCurrentHealth ;
+    [SerializeField] private float unitDamageMin = 5f;
+    [SerializeField] private float unitDamageMax = 10f;
+    [SerializeField] private int unitActionpoints = 100;
+    [SerializeField] private GameObject unit;
+
+    void start()
+    {
+        UnitCurrentHealth = UnitMaxHealth;
+    }
+
+
+   
+
+
+
+
 
  }
+
+
 
