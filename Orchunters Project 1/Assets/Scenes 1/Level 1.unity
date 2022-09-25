@@ -410,7 +410,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 133189643}
   m_LocalRotation: {x: -0, y: -0.36202806, z: -0, w: -0.93216723}
-  m_LocalPosition: {x: -0.96671534, y: -0, z: 1.9246489}
+  m_LocalPosition: {x: -0.96671534, y: 0, z: 1.9246489}
   m_LocalScale: {x: 1, y: 0, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -481,7 +481,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 186123859}
   m_LocalRotation: {x: -0, y: -0.4531644, z: -0, w: 0.891427}
-  m_LocalPosition: {x: -85.65586, y: 0, z: 66.586334}
+  m_LocalPosition: {x: -91.60809, y: 0, z: 71.83084}
   m_LocalScale: {x: 1, y: 0, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -621,6 +621,7 @@ GameObject:
   - component: {fileID: 272349632}
   - component: {fileID: 272349634}
   - component: {fileID: 272349635}
+  - component: {fileID: 272349636}
   m_Layer: 5
   m_Name: Panel
   m_TagString: Player
@@ -724,6 +725,19 @@ MonoBehaviour:
   damage: {fileID: 812472106}
   actionpoint: {fileID: 2092962623}
   playerturnname: {fileID: 503233510}
+  playerUnits:
+  - {fileID: 370070233}
+  - {fileID: 573263353}
+  - {fileID: 1489374628}
+  - {fileID: 1534956487}
+  - {fileID: 806062850}
+  - {fileID: 2002835737}
+  - {fileID: 1950131720}
+  - {fileID: 267747573}
+  - {fileID: 1329668770}
+  - {fileID: 552195280}
+  - {fileID: 106920485}
+  - {fileID: 895189493}
   cameraplayer1unit1: {fileID: 1635812883}
   cameraplayer1unit2: {fileID: 133189645}
   cameraplayer1unit3: {fileID: 1557149757}
@@ -736,6 +750,7 @@ MonoBehaviour:
   cameraplayer4unit1: {fileID: 498383393}
   cameraplayer4unit2: {fileID: 857561003}
   cameraplayer4unit3: {fileID: 419122273}
+  unitStats: {fileID: 272349636}
 --- !u!114 &272349635
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -752,6 +767,24 @@ MonoBehaviour:
   unitIndex: 0
   gameUi: {fileID: 272349634}
   animatorRun: {fileID: 0}
+--- !u!114 &272349636
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 272349630}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 303640af88fa7694c979fe93f90a2fde, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unitMaxHealth: 0
+  unitCurrentHealth: 0
+  unitDamageMin: 5
+  unitDamageMax: 10
+  unitActionpoints: 100
+  unit: {fileID: 0}
 --- !u!1 &304616243
 GameObject:
   m_ObjectHideFlags: 0
@@ -879,7 +912,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 303640af88fa7694c979fe93f90a2fde, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UnitMaxHealth: 100
+  unitMaxHealth: 100
+  unitCurrentHealth: 100
   unitDamageMin: 5
   unitDamageMax: 10
   unitActionpoints: 100
@@ -1067,7 +1101,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5833755455673808355, guid: d8c6f65c212cd2943997e75862b6699b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.8941615
+      value: -2.964
       objectReference: {fileID: 0}
     - target: {fileID: 5833755455673808355, guid: d8c6f65c212cd2943997e75862b6699b, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1128,7 +1162,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 419122271}
   m_LocalRotation: {x: -0, y: -0.4531644, z: -0, w: 0.891427}
-  m_LocalPosition: {x: 66.52164, y: -0, z: 90.36492}
+  m_LocalPosition: {x: 72.48489, y: -0, z: 97.02785}
   m_LocalScale: {x: 1, y: 0, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1285,7 +1319,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 498383391}
   m_LocalRotation: {x: -0, y: -0.4531644, z: -0, w: 0.891427}
-  m_LocalPosition: {x: 68.81816, y: 0, z: 88.75552}
+  m_LocalPosition: {x: 74.781425, y: 0, z: 95.41844}
   m_LocalScale: {x: 1, y: 0, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1590,7 +1624,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 303640af88fa7694c979fe93f90a2fde, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UnitMaxHealth: 100
+  unitMaxHealth: 0
+  unitCurrentHealth: 0
   unitDamageMin: 5
   unitDamageMax: 10
   unitActionpoints: 100
@@ -1760,10 +1795,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Damping: {x: 0.05, y: 0, z: 0.3}
-  ShoulderOffset: {x: -0.12, y: 1.83, z: -10}
+  ShoulderOffset: {x: -0.12, y: 2.2, z: -10}
   VerticalArmLength: 0.4
   CameraSide: 1
-  CameraDistance: 4
+  CameraDistance: 10
   CameraCollisionFilter:
     serializedVersion: 2
     m_Bits: 0
@@ -1848,10 +1883,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Damping: {x: 0.05, y: 0, z: 0.3}
-  ShoulderOffset: {x: -0.12, y: 1.83, z: -10}
+  ShoulderOffset: {x: -0.12, y: 2.2, z: -10}
   VerticalArmLength: 0.4
-  CameraSide: 1
-  CameraDistance: 4
+  CameraSide: 0.302
+  CameraDistance: 10
   CameraCollisionFilter:
     serializedVersion: 2
     m_Bits: 0
@@ -2197,10 +2232,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Damping: {x: 0.05, y: 0, z: 0.3}
-  ShoulderOffset: {x: -0.12, y: 1.83, z: -10}
+  ShoulderOffset: {x: -0.12, y: 2.2, z: -10}
   VerticalArmLength: 0.4
   CameraSide: 1
-  CameraDistance: 4
+  CameraDistance: 10
   CameraCollisionFilter:
     serializedVersion: 2
     m_Bits: 0
@@ -2340,7 +2375,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 747158262}
   m_LocalRotation: {x: -0, y: -0.4531644, z: -0, w: 0.891427}
-  m_LocalPosition: {x: -83.86825, y: 0, z: 67.78769}
+  m_LocalPosition: {x: -89.82048, y: 0, z: 73.0322}
   m_LocalScale: {x: 1, y: 0, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2524,10 +2559,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Damping: {x: 0.05, y: 0, z: 0.3}
-  ShoulderOffset: {x: -0.12, y: 1.83, z: -10}
+  ShoulderOffset: {x: -0.12, y: 2.2, z: -10}
   VerticalArmLength: 0.4
   CameraSide: 1
-  CameraDistance: 4
+  CameraDistance: 10
   CameraCollisionFilter:
     serializedVersion: 2
     m_Bits: 0
@@ -2796,7 +2831,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 845697323}
   m_LocalRotation: {x: -0, y: -0.4531644, z: -0, w: 0.891427}
-  m_LocalPosition: {x: -83.3346, y: -0, z: 65.0128}
+  m_LocalPosition: {x: -89.28684, y: -0, z: 70.25731}
   m_LocalScale: {x: 1, y: 0, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2867,7 +2902,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 857561001}
   m_LocalRotation: {x: -0, y: -0.4531644, z: -0, w: 0.891427}
-  m_LocalPosition: {x: 67.01211, y: 0, z: 87.582085}
+  m_LocalPosition: {x: 72.975365, y: 0, z: 94.245}
   m_LocalScale: {x: 1, y: 0, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2996,7 +3031,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   m_LocalRotation: {x: 0, y: 0.4531644, z: 0, w: 0.891427}
-  m_LocalPosition: {x: -7.864359, y: 2.4, z: -2.774662}
+  m_LocalPosition: {x: -12.711915, y: 2.7001617, z: -6.310366}
   m_LocalScale: {x: 1, y: 0, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3253,7 +3288,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 303640af88fa7694c979fe93f90a2fde, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UnitMaxHealth: 100
+  unitMaxHealth: 200
+  unitCurrentHealth: 200
   unitDamageMin: 5
   unitDamageMax: 10
   unitActionpoints: 100
@@ -3593,7 +3629,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 303640af88fa7694c979fe93f90a2fde, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UnitMaxHealth: 100
+  unitMaxHealth: 0
+  unitCurrentHealth: 0
   unitDamageMin: 5
   unitDamageMax: 10
   unitActionpoints: 100
@@ -4020,10 +4057,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Damping: {x: 0.05, y: 0, z: 0.3}
-  ShoulderOffset: {x: -0.12, y: 1.83, z: -10}
+  ShoulderOffset: {x: -0.12, y: 2.2, z: -10}
   VerticalArmLength: 0.4
   CameraSide: 1
-  CameraDistance: 4
+  CameraDistance: 10
   CameraCollisionFilter:
     serializedVersion: 2
     m_Bits: 0
@@ -4215,7 +4252,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 303640af88fa7694c979fe93f90a2fde, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UnitMaxHealth: 100
+  unitMaxHealth: 0
+  unitCurrentHealth: 0
   unitDamageMin: 5
   unitDamageMax: 10
   unitActionpoints: 100
@@ -4547,10 +4585,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Damping: {x: 0.05, y: 0, z: 0.3}
-  ShoulderOffset: {x: -0.12, y: 1.83, z: -10}
+  ShoulderOffset: {x: -0.12, y: 2.2, z: -10}
   VerticalArmLength: 0.4
   CameraSide: 1
-  CameraDistance: 4
+  CameraDistance: 10
   CameraCollisionFilter:
     serializedVersion: 2
     m_Bits: 0
@@ -4726,7 +4764,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 303640af88fa7694c979fe93f90a2fde, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UnitMaxHealth: 100
+  unitMaxHealth: 175
+  unitCurrentHealth: 175
   unitDamageMin: 5
   unitDamageMax: 10
   unitActionpoints: 100
@@ -4934,7 +4973,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 303640af88fa7694c979fe93f90a2fde, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UnitMaxHealth: 100
+  unitMaxHealth: 0
+  unitCurrentHealth: 0
   unitDamageMin: 5
   unitDamageMax: 10
   unitActionpoints: 100
@@ -4999,10 +5039,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Damping: {x: 0.05, y: 0, z: 0.3}
-  ShoulderOffset: {x: -0.12, y: 1.83, z: -10}
+  ShoulderOffset: {x: -0.12, y: 2.2, z: -10}
   VerticalArmLength: 0.4
   CameraSide: 1
-  CameraDistance: 4
+  CameraDistance: 10
   CameraCollisionFilter:
     serializedVersion: 2
     m_Bits: 0
@@ -5219,10 +5259,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Damping: {x: 0.05, y: 0, z: 0.3}
-  ShoulderOffset: {x: -0.12, y: 1.83, z: -10}
+  ShoulderOffset: {x: -0.12, y: 2.2, z: -10}
   VerticalArmLength: 0.4
   CameraSide: 1
-  CameraDistance: 4
+  CameraDistance: 10
   CameraCollisionFilter:
     serializedVersion: 2
     m_Bits: 0
@@ -5366,7 +5406,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 303640af88fa7694c979fe93f90a2fde, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UnitMaxHealth: 100
+  unitMaxHealth: 0
+  unitCurrentHealth: 0
   unitDamageMin: 5
   unitDamageMax: 10
   unitActionpoints: 100
@@ -5607,10 +5648,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Damping: {x: 0.05, y: 0, z: 0.3}
-  ShoulderOffset: {x: -0.12, y: 1.83, z: -10}
+  ShoulderOffset: {x: -0.12, y: 2.2, z: -10}
   VerticalArmLength: 0.4
   CameraSide: 1
-  CameraDistance: 4
+  CameraDistance: 10
   CameraCollisionFilter:
     serializedVersion: 2
     m_Bits: 0
@@ -5732,7 +5773,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1632972390}
   m_LocalRotation: {x: -0, y: -0.4531644, z: -0, w: 0.891427}
-  m_LocalPosition: {x: -18.1977, y: 0, z: 152.39194}
+  m_LocalPosition: {x: -18.856934, y: 0, z: 164.35559}
   m_LocalScale: {x: 1, y: 0, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -5909,10 +5950,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Damping: {x: 0.05, y: 0, z: 0.3}
-  ShoulderOffset: {x: -0.12, y: 1.83, z: -10}
+  ShoulderOffset: {x: -0.12, y: 2.2, z: -10}
   VerticalArmLength: 0.4
   CameraSide: 1
-  CameraDistance: 4
+  CameraDistance: 10
   CameraCollisionFilter:
     serializedVersion: 2
     m_Bits: 0
@@ -6023,10 +6064,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Damping: {x: 0.05, y: 0, z: 0.3}
-  ShoulderOffset: {x: -0.12, y: 1.83, z: -10}
+  ShoulderOffset: {x: -0.12, y: 2.2, z: -10}
   VerticalArmLength: 0.4
   CameraSide: 1
-  CameraDistance: 4
+  CameraDistance: 10
   CameraCollisionFilter:
     serializedVersion: 2
     m_Bits: 0
@@ -6448,7 +6489,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 303640af88fa7694c979fe93f90a2fde, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UnitMaxHealth: 100
+  unitMaxHealth: 0
+  unitCurrentHealth: 0
   unitDamageMin: 5
   unitDamageMax: 10
   unitActionpoints: 100
@@ -6513,10 +6555,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Damping: {x: 0.05, y: 0, z: 0.3}
-  ShoulderOffset: {x: -0.12, y: 1.83, z: -10}
+  ShoulderOffset: {x: -0.12, y: 2.2, z: -10}
   VerticalArmLength: 0.4
   CameraSide: 1
-  CameraDistance: 4
+  CameraDistance: 10
   CameraCollisionFilter:
     serializedVersion: 2
     m_Bits: 0
@@ -6660,7 +6702,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 303640af88fa7694c979fe93f90a2fde, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UnitMaxHealth: 100
+  unitMaxHealth: 0
+  unitCurrentHealth: 0
   unitDamageMin: 5
   unitDamageMax: 10
   unitActionpoints: 100
@@ -6930,7 +6973,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1978057463}
   m_LocalRotation: {x: -0, y: -0.45316443, z: -0, w: 0.89142704}
-  m_LocalPosition: {x: -19.370026, y: 0, z: 154.19868}
+  m_LocalPosition: {x: -20.029274, y: 0, z: 166.16237}
   m_LocalScale: {x: 1, y: 0, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -7160,7 +7203,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 303640af88fa7694c979fe93f90a2fde, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UnitMaxHealth: 100
+  unitMaxHealth: 0
+  unitCurrentHealth: 0
   unitDamageMin: 5
   unitDamageMax: 10
   unitActionpoints: 100
@@ -7312,7 +7356,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2049300227}
   m_LocalRotation: {x: -0, y: -0.4531644, z: -0, w: 0.891427}
-  m_LocalPosition: {x: -20.980843, y: -0, z: 151.90317}
+  m_LocalPosition: {x: -21.806595, y: -0, z: 163.84842}
   m_LocalScale: {x: 1, y: 0, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -7696,7 +7740,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 303640af88fa7694c979fe93f90a2fde, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UnitMaxHealth: 100
+  unitMaxHealth: 0
+  unitCurrentHealth: 0
   unitDamageMin: 5
   unitDamageMax: 10
   unitActionpoints: 100

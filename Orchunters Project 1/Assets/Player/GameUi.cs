@@ -24,6 +24,7 @@ public class GameUi : MonoBehaviour
     [SerializeField] private TextMeshProUGUI damage;
     [SerializeField] private TextMeshProUGUI actionpoint;
     [SerializeField] private TextMeshProUGUI playerturnname;
+    public List<GameObject> playerUnits = new List<GameObject>();    
 
 
     [SerializeField] CinemachineVirtualCamera cameraplayer1unit1;
@@ -45,8 +46,11 @@ public class GameUi : MonoBehaviour
 
 
     //getting info from other script
-    private int currentUnitIndex;
+    [SerializeField] UnitStats unitStats;
 
+    
+            
+    private int currentUnitIndex;
     private int currentPlayerIndex;
     private int playerturnint;
 
@@ -72,6 +76,9 @@ public class GameUi : MonoBehaviour
         cameraplayer4unit2.m_Priority = cameraInt;
         cameraplayer4unit3.m_Priority = cameraInt;
         playerturnname.text = "Red Stalion";
+        UnitButtonPressed(1);
+        UnitButtonPressed(1);
+       
     }
 
 
@@ -86,10 +93,7 @@ public class GameUi : MonoBehaviour
         {
             playerturnint = 1;
         }
-
-        
-        UnitButtonPressed(1);
-        UnitButtonPressed(1);
+               
         ImageChange();
         
     }
@@ -103,7 +107,8 @@ public class GameUi : MonoBehaviour
         {
             if (currentUnitIndex == 1)
             {
-                cameraplayer1unit1.m_Priority = cameraInt++; 
+                cameraplayer1unit1.m_Priority = cameraInt++;
+                
             }
             if (currentUnitIndex == 2)
             {
@@ -189,7 +194,39 @@ public class GameUi : MonoBehaviour
             playerturnname.text = "Purple Centaur";
         }
 
-
-
+        
+        
+       
     }
+
+   
+           
+        
+
+        public void Update()
+    {
+        if (playerturnint == 1)
+        {
+            if (currentUnitIndex == 1)
+            {
+                UnitStats currentUnitStats = playerUnits[0].GetComponent<UnitStats>();
+                health.text = currentUnitStats.unitCurrentHealth.ToString() + "/" + currentUnitStats.unitMaxHealth.ToString();
+            }
+
+            if (currentUnitIndex == 2)
+            {
+                cameraplayer1unit2.m_Priority = cameraInt++;
+                UnitStats currentUnitStats = playerUnits[1].GetComponent<UnitStats>();
+                health.text = currentUnitStats.unitCurrentHealth.ToString() + "/" + currentUnitStats.unitMaxHealth.ToString();
+            }
+
+            if (currentUnitIndex == 3)
+            {
+                cameraplayer1unit3.m_Priority = cameraInt++;
+                UnitStats currentUnitStats = playerUnits[2].GetComponent<UnitStats>();
+                health.text = currentUnitStats.unitCurrentHealth.ToString() + "/" + currentUnitStats.unitMaxHealth.ToString();
+            }
+        }
+    }
+
 }
