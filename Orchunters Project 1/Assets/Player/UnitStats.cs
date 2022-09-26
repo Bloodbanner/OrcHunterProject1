@@ -8,8 +8,9 @@ public class UnitStats : MonoBehaviour
     public int unitCurrentHealth;
     public int unitDamageMin;
     public int unitDamageMax;
-    public int unitActionpoints;
+    public float unitActionpoints;
     public GameObject unit;
+    public bool defend = false;
 
     void start()
     {

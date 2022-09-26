@@ -10,6 +10,7 @@ public class CharacterWeapon : MonoBehaviour
     [SerializeField] private Transform shootingStartPosition;
     public GameUi ui;
     [SerializeField] private Animator animator;
+    [SerializeField] PlayerMovement playerMovement;
 
     private void Start()
     {
@@ -21,16 +22,19 @@ public class CharacterWeapon : MonoBehaviour
     {
 
         bool isPlayerTurn = playerTurn.IsPlayerTurn();
-        if (Input.GetKeyDown(KeyCode.Mouse0))
+        if (ui.attack == true)
         { 
             if (isPlayerTurn)
             {
                 if (isAttacking == false)
                 {
+                    ui.attack = false;
                     animator.SetTrigger("Attack");
                     StartCoroutine(Test());
                     isAttacking = true;
-                }               
+                    playerMovement.canmove = false;
+
+                }
             }
         }
     }
@@ -44,6 +48,7 @@ public class CharacterWeapon : MonoBehaviour
         newProjectile.GetComponent<Projectile>().Initialize(force);
         yield return new WaitForSeconds(4f);
         isAttacking = false;
+        playerMovement.canmove = true;
     }
 
 
