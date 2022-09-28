@@ -14,8 +14,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private Animator animatorRun;
 
     Rigidbody m_Rigidbody;
-    private float m_Speed = 50f;
-    private float m_RotationSpeed;
+    public float m_Speed;
+    
     // Start is called before the first frame update  
     void Start()
     {
@@ -23,43 +23,78 @@ public class PlayerMovement : MonoBehaviour
     }
 
     // Update is called once per frame  
-    void Update()
+    void FixedUpdate()
     {
         if (TurnManager.GetInstance().IsItPlayerTurn(playerIndex) && gameUi.IsUnitsTurn(unitIndex))
         {
 
             if (unitstats.unitActionpoints > 0)
             {
-                float movementForward = Input.GetAxis("Vertical") * m_Speed * Time.deltaTime;
-                float rotation = Input.GetAxis("Horizontal") * m_RotationSpeed * Time.deltaTime;
-                
-               
-                if (!Mathf.Approximately(Mathf.Abs(movementForward), 0.0f) || !Mathf.Approximately(Mathf.Abs(rotation), 0.0f))
+                if (canmove == true)
                 {
-                    unitstats.unitActionpoints = unitstats.unitActionpoints - Time.deltaTime;
-                    Debug.Log("Velocity: " + m_Rigidbody.velocity);
-                    Debug.Log(transform.forward * movementForward);
-                    // forward and back movement
-                    m_Rigidbody.velocity = new Vector3(m_Rigidbody.velocity.x, m_Rigidbody.velocity.y, movementForward);
-                    // rotation
-                    Vector3 rotationAngle = Vector3.up * rotation;
-                    Quaternion deltaRotation = Quaternion.Euler(rotationAngle);
-                    m_Rigidbody.MoveRotation(m_Rigidbody.rotation * deltaRotation);
-                    
-                    
+                    if (Input.GetKey(KeyCode.W))
+                    {
+                        m_Rigidbody.velocity = transform.forward * m_Speed * Time.deltaTime;
+
+                        animatorRun.SetBool("Run", true);
+                        unitstats.unitActionpoints = unitstats.unitActionpoints - Time.deltaTime;
+                    }
+                    if (Input.GetKeyUp(KeyCode.W))
+                    {
+                        animatorRun.SetBool("Run", false);
+                    }
+
+                    if (Input.GetKey(KeyCode.S))
+                    {
+                        m_Rigidbody.velocity = transform.forward *-1 * m_Speed * Time.deltaTime;
+                        animatorRun.SetBool("Back", true);
+                        unitstats.unitActionpoints = unitstats.unitActionpoints - Time.deltaTime;
+                    }
+                    if (Input.GetKeyUp(KeyCode.S))
+                    {
+                        animatorRun.SetBool("Back", false);
+                    }
+
+                    if (Input.GetKey(KeyCode.A))
+                    {
+                        this.transform.Rotate(Vector3.up, -0.8f);
+                    }
+
+                    if (Input.GetKey(KeyCode.D))
+                    {
+                        this.transform.Rotate(Vector3.up, 0.8f);
+                    }
+
+                    if (unitstats.unitActionpoints <= 0)
+                    {
+                        animatorRun.SetBool("Run", false);
+                        animatorRun.SetBool("Back", false);
+                    }
+
+                    if (canmove == false)
+                    {
+                        animatorRun.SetBool("Run", false);
+                        animatorRun.SetBool("Back", false);
+                    }
                 }
-
+                
             }
-            else
+            if (unitstats.unitActionpoints <= 0)
             {
-                m_Rigidbody.velocity = new Vector3(0.0f, m_Rigidbody.velocity.y, 0.0f);
+                animatorRun.SetBool("Run", false);
+                animatorRun.SetBool("Back", false);
             }
-        }
-        else
-        {
-            m_Rigidbody.velocity = new Vector3(0.0f, m_Rigidbody.velocity.y, 0.0f);
+
+            if (canmove == false) 
+            {
+                animatorRun.SetBool("Run", false);
+                animatorRun.SetBool("Back", false);
+            }
+            
+            
+
+
         }
 
-        animatorRun.SetFloat("movementV", m_Rigidbody.velocity.z);
     }
 }

@@ -328,7 +328,7 @@ Terrain:
   m_GameObject: {fileID: 45761865}
   m_Enabled: 1
   serializedVersion: 6
-  m_TerrainData: {fileID: 15600000, guid: 53d4755f889bc2646a74244415bddc8b, type: 2}
+  m_TerrainData: {fileID: 0}
   m_TreeDistance: 5000
   m_TreeBillboardDistance: 50
   m_TreeCrossFadeLength: 5
@@ -978,8 +978,11 @@ MonoBehaviour:
   cameraplayer4unit3: {fileID: 419122273}
   defendshield: {fileID: 7204113271996786578, guid: 79acc4ab4aaaa734a83388632f6c59f2, type: 3}
   attack: 0
+  isAttackingDontAllowAttacking: 1
   unitStats: {fileID: 272349636}
   characterWeapon: {fileID: 272349637}
+  currentUnitIndex: 0
+  currentPlayerIndex: 0
 --- !u!114 &272349635
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -998,6 +1001,7 @@ MonoBehaviour:
   unitIndex: 0
   gameUi: {fileID: 272349634}
   animatorRun: {fileID: 0}
+  m_Speed: 200
 --- !u!114 &272349636
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1034,7 +1038,7 @@ MonoBehaviour:
   shootingStartPosition: {fileID: 0}
   ui: {fileID: 0}
   animator: {fileID: 0}
-  playerMovement: {fileID: 272349635}
+  playerMovement: {fileID: 0}
 --- !u!1 &304616243
 GameObject:
   m_ObjectHideFlags: 0
@@ -1229,6 +1233,7 @@ MonoBehaviour:
   unitIndex: 1
   gameUi: {fileID: 272349634}
   animatorRun: {fileID: 370070248}
+  m_Speed: 200
 --- !u!54 &370070236
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2214,6 +2219,7 @@ MonoBehaviour:
   unitIndex: 1
   gameUi: {fileID: 272349634}
   animatorRun: {fileID: 552195291}
+  m_Speed: 200
 --- !u!23 &552195286
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -2284,7 +2290,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 90
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!114 &552195290
 MonoBehaviour:
@@ -3846,7 +3852,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 82
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!114 &982680219
 MonoBehaviour:
@@ -3866,6 +3872,7 @@ MonoBehaviour:
   unitIndex: 2
   gameUi: {fileID: 272349634}
   animatorRun: {fileID: 982680223}
+  m_Speed: 225
 --- !u!23 &982680220
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -3958,6 +3965,43 @@ MonoBehaviour:
   unitActionpoints: 10
   unit: {fileID: 573263353}
   defend: 0
+--- !u!114 &982680225
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 573263353}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0782f7486ec050c4fb155fd9f88db234, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isAttacking: 0
+  playerTurn: {fileID: 0}
+  projectilePrefab: {fileID: 0}
+  shootingStartPosition: {fileID: 0}
+  ui: {fileID: 0}
+  animator: {fileID: 0}
+  playerMovement: {fileID: 0}
+--- !u!114 &982680226
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 573263353}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd805e1c4c07d7f4e8bbebb8829c3a23, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerTurn: {fileID: 982680222}
+  projectilePrefab: {fileID: 7204113271996786578, guid: 3437976f3fde9854bbbc2016541d912d, type: 3}
+  shootingStartPosition: {fileID: 10688667}
+  ui: {fileID: 272349634}
+  animator: {fileID: 982680223}
+  playerMovement: {fileID: 982680219}
 --- !u!1 &1033135605
 GameObject:
   m_ObjectHideFlags: 0
@@ -4221,7 +4265,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 90
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!114 &1102059045
 MonoBehaviour:
@@ -4241,6 +4285,7 @@ MonoBehaviour:
   unitIndex: 3
   gameUi: {fileID: 272349634}
   animatorRun: {fileID: 1102059047}
+  m_Speed: 250
 --- !u!136 &1102059046
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -4330,7 +4375,7 @@ MonoBehaviour:
   unitCurrentHealth: 175
   unitDamageMin: 10
   unitDamageMax: 20
-  unitActionpoints: 15
+  unitActionpoints: 10
   unit: {fileID: 895189493}
   defend: 0
 --- !u!1 &1120929963
@@ -4954,7 +4999,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 90
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!114 &1329668773
 MonoBehaviour:
@@ -4974,6 +5019,7 @@ MonoBehaviour:
   unitIndex: 3
   gameUi: {fileID: 272349634}
   animatorRun: {fileID: 1329668775}
+  m_Speed: 250
 --- !u!136 &1329668774
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -5063,7 +5109,7 @@ MonoBehaviour:
   unitCurrentHealth: 175
   unitDamageMin: 10
   unitDamageMax: 20
-  unitActionpoints: 15
+  unitActionpoints: 10
   unit: {fileID: 1329668770}
   defend: 0
 --- !u!1 &1331565435
@@ -5691,7 +5737,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 88
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!136 &1489374631
 CapsuleCollider:
@@ -5767,6 +5813,7 @@ MonoBehaviour:
   unitIndex: 3
   gameUi: {fileID: 272349634}
   animatorRun: {fileID: 1489374635}
+  m_Speed: 250
 --- !u!114 &1489374634
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5800,7 +5847,7 @@ MonoBehaviour:
   unitCurrentHealth: 175
   unitDamageMin: 10
   unitDamageMax: 20
-  unitActionpoints: 15
+  unitActionpoints: 10
   unit: {fileID: 1489374628}
   defend: 0
 --- !u!1001 &1499364497
@@ -5903,7 +5950,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 90
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!114 &1499364501
 MonoBehaviour:
@@ -5923,6 +5970,7 @@ MonoBehaviour:
   unitIndex: 2
   gameUi: {fileID: 272349634}
   animatorRun: {fileID: 1499364503}
+  m_Speed: 225
 --- !u!136 &1499364502
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -6468,6 +6516,7 @@ MonoBehaviour:
   unitIndex: 1
   gameUi: {fileID: 272349634}
   animatorRun: {fileID: 1534956498}
+  m_Speed: 200
 --- !u!23 &1534956493
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -6538,7 +6587,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 90
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!114 &1534956497
 MonoBehaviour:
@@ -7773,7 +7822,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 90
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!114 &1903018897
 MonoBehaviour:
@@ -7793,6 +7842,7 @@ MonoBehaviour:
   unitIndex: 2
   gameUi: {fileID: 272349634}
   animatorRun: {fileID: 1903018899}
+  m_Speed: 225
 --- !u!136 &1903018898
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -8118,6 +8168,7 @@ MonoBehaviour:
   unitIndex: 1
   gameUi: {fileID: 272349634}
   animatorRun: {fileID: 1950131731}
+  m_Speed: 200
 --- !u!23 &1950131726
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -8188,7 +8239,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 90
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!114 &1950131730
 MonoBehaviour:
@@ -8494,7 +8545,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 90
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!114 &2002835740
 MonoBehaviour:
@@ -8514,6 +8565,7 @@ MonoBehaviour:
   unitIndex: 3
   gameUi: {fileID: 272349634}
   animatorRun: {fileID: 2002835742}
+  m_Speed: 250
 --- !u!136 &2002835741
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -8603,7 +8655,7 @@ MonoBehaviour:
   unitCurrentHealth: 175
   unitDamageMin: 10
   unitDamageMax: 20
-  unitActionpoints: 15
+  unitActionpoints: 10
   unit: {fileID: 2002835737}
   defend: 0
 --- !u!1 &2027548224
@@ -9297,7 +9349,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 90
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!114 &2109345446
 MonoBehaviour:
@@ -9317,6 +9369,7 @@ MonoBehaviour:
   unitIndex: 2
   gameUi: {fileID: 272349634}
   animatorRun: {fileID: 2109345448}
+  m_Speed: 225
 --- !u!136 &2109345447
 CapsuleCollider:
   m_ObjectHideFlags: 0

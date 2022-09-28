@@ -23,8 +23,8 @@ public class CharacterWeapon : MonoBehaviour
 
         bool isPlayerTurn = playerTurn.IsPlayerTurn();
         if (ui.attack == true)
-        { 
-            if (isPlayerTurn)
+        {
+            if (isPlayerTurn && ui.currentUnitIndex == 1)
             {
                 if (isAttacking == false)
                 {
@@ -36,6 +36,7 @@ public class CharacterWeapon : MonoBehaviour
 
                 }
             }
+
         }
     }
 
@@ -49,6 +50,7 @@ public class CharacterWeapon : MonoBehaviour
         yield return new WaitForSeconds(4f);
         isAttacking = false;
         playerMovement.canmove = true;
+        ui.isAttackingDontAllowAttacking = true;
     }
 
 
