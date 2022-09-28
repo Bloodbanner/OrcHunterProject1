@@ -11,13 +11,19 @@ public class UnitStats : MonoBehaviour
     public float unitActionpoints;
     public GameObject unit;
     public bool defend = false;
-
+    [SerializeField] Projectile projectile;
     void start()
     {
-        
+
     }
+    public void Update()
+    {
+       
+
+    }
+
     
- }
+}
 
 
 

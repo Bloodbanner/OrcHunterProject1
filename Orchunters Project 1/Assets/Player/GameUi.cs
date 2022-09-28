@@ -13,9 +13,10 @@ public class GameUi : MonoBehaviour
     [SerializeField] private Sprite Player4flag;
     [SerializeField] private Image playerTurnFlag;
     [SerializeField] private Image endtextbutton;
-    [SerializeField] private Sprite unit1Dead;
-    [SerializeField] private Sprite unit2Dead;
-    [SerializeField] private Sprite unit3Dead;
+    [SerializeField] private Image unit1Deadimage;
+    [SerializeField] private Image unit2Deadimage;
+    [SerializeField] private Image unit3Deadimage;
+    [SerializeField] private Sprite unitDead;
     [SerializeField] private Button endTurnButton;
     [SerializeField] private Button AttackButton;
     [SerializeField] private Button DefendButton;
@@ -26,8 +27,9 @@ public class GameUi : MonoBehaviour
     [SerializeField] private TextMeshProUGUI actionpoint;
     [SerializeField] private TextMeshProUGUI playerturnname;
     public List<GameObject> playerUnits = new List<GameObject>();
+    [SerializeField] public TextMeshProUGUI combatlog;
 
-    
+
     [SerializeField] CinemachineVirtualCamera cameraplayer1unit1;
     [SerializeField] CinemachineVirtualCamera cameraplayer1unit2;
     [SerializeField] CinemachineVirtualCamera cameraplayer1unit3;
@@ -49,7 +51,7 @@ public class GameUi : MonoBehaviour
 
 
     //getting info from other script
-
+    [SerializeField] Projectile projectile;
     [SerializeField] UnitStats unitStats;
     [SerializeField] CharacterWeapon characterWeapon;
     private int Wichunit;
@@ -83,9 +85,7 @@ public class GameUi : MonoBehaviour
         playerturnname.text = "Red Stalion";
         UnitButtonPressed(1);
         UnitButtonPressed(1);
-        Debug.Log(playerturnint);
-        Debug.Log(currentUnitIndex);
-
+        
     }
     public void AttackButtonPressed()
     {
@@ -324,25 +324,47 @@ public class GameUi : MonoBehaviour
             {
                 selectedunit = 0;
                 UnitStats currentUnitStats = playerUnits[0].GetComponent<UnitStats>();
-                health.text = currentUnitStats.unitCurrentHealth.ToString() + "/" + currentUnitStats.unitMaxHealth.ToString();
-                actionpoint.text = Mathf.RoundToInt(currentUnitStats.unitActionpoints).ToString();
-               
+                if (currentUnitStats.unitCurrentHealth > 0)
+                {
+                    health.text = currentUnitStats.unitCurrentHealth.ToString() + "/" + currentUnitStats.unitMaxHealth.ToString();
+                    actionpoint.text = Mathf.RoundToInt(currentUnitStats.unitActionpoints).ToString();
+                   
+                }
+                else     
+                {
+                    unit1Deadimage.sprite = unitDead;
+                    unit1Deadimage.color = new Color(1, 1, 1, 1);
+                }
             }
 
             if (currentUnitIndex == 2)
             {
                 selectedunit = 1;
                 UnitStats currentUnitStats = playerUnits[1].GetComponent<UnitStats>();
-                health.text = currentUnitStats.unitCurrentHealth.ToString() + "/" + currentUnitStats.unitMaxHealth.ToString();               
-                actionpoint.text = Mathf.RoundToInt(currentUnitStats.unitActionpoints).ToString();
+                if (currentUnitStats.unitCurrentHealth > 0)
+                {
+                    health.text = currentUnitStats.unitCurrentHealth.ToString() + "/" + currentUnitStats.unitMaxHealth.ToString();
+                    actionpoint.text = Mathf.RoundToInt(currentUnitStats.unitActionpoints).ToString();
+                  
+                }
+                else
+                {
+                    unit2Deadimage.sprite = unitDead;
+                    unit2Deadimage.color = new Color(1, 1, 1, 1);
+                }
             }
 
             if (currentUnitIndex == 3)
             {
                 selectedunit = 2;
+
                 UnitStats currentUnitStats = playerUnits[2].GetComponent<UnitStats>();
-                health.text = currentUnitStats.unitCurrentHealth.ToString() + "/" + currentUnitStats.unitMaxHealth.ToString();               
-                actionpoint.text = Mathf.RoundToInt(currentUnitStats.unitActionpoints).ToString();
+                if (currentUnitStats.unitCurrentHealth > 0)
+                {
+                    health.text = currentUnitStats.unitCurrentHealth.ToString() + "/" + currentUnitStats.unitMaxHealth.ToString();
+                    actionpoint.text = Mathf.RoundToInt(currentUnitStats.unitActionpoints).ToString();
+                }
+                   
             }
         }
         if (playerturnint == 2)
@@ -351,24 +373,33 @@ public class GameUi : MonoBehaviour
             {
                 selectedunit = 3;
                 UnitStats currentUnitStats = playerUnits[3].GetComponent<UnitStats>();
-                health.text = currentUnitStats.unitCurrentHealth.ToString() + "/" + currentUnitStats.unitMaxHealth.ToString();               
-                actionpoint.text = Mathf.RoundToInt(currentUnitStats.unitActionpoints).ToString();
+                if (currentUnitStats.unitCurrentHealth > 0)
+                {
+                    health.text = currentUnitStats.unitCurrentHealth.ToString() + "/" + currentUnitStats.unitMaxHealth.ToString();
+                    actionpoint.text = Mathf.RoundToInt(currentUnitStats.unitActionpoints).ToString();
+                }
             }
 
             if (currentUnitIndex == 2)
             {
                 selectedunit = 4;
                 UnitStats currentUnitStats = playerUnits[4].GetComponent<UnitStats>();
-                health.text = currentUnitStats.unitCurrentHealth.ToString() + "/" + currentUnitStats.unitMaxHealth.ToString();               
-                actionpoint.text = Mathf.RoundToInt(currentUnitStats.unitActionpoints).ToString();
+                if (currentUnitStats.unitCurrentHealth > 0)
+                {
+                    health.text = currentUnitStats.unitCurrentHealth.ToString() + "/" + currentUnitStats.unitMaxHealth.ToString();
+                    actionpoint.text = Mathf.RoundToInt(currentUnitStats.unitActionpoints).ToString();
+                }
             }
 
             if (currentUnitIndex == 3)
             {
                 selectedunit = 5;
                 UnitStats currentUnitStats = playerUnits[5].GetComponent<UnitStats>();
-                health.text = currentUnitStats.unitCurrentHealth.ToString() + "/" + currentUnitStats.unitMaxHealth.ToString();               
-                actionpoint.text = Mathf.RoundToInt(currentUnitStats.unitActionpoints).ToString();
+                if (currentUnitStats.unitCurrentHealth > 0)
+                {
+                    health.text = currentUnitStats.unitCurrentHealth.ToString() + "/" + currentUnitStats.unitMaxHealth.ToString();
+                    actionpoint.text = Mathf.RoundToInt(currentUnitStats.unitActionpoints).ToString();
+                }
             }
         }
         if (playerturnint == 3)
@@ -377,24 +408,33 @@ public class GameUi : MonoBehaviour
             {
                 selectedunit = 6;
                 UnitStats currentUnitStats = playerUnits[6].GetComponent<UnitStats>();
-                health.text = currentUnitStats.unitCurrentHealth.ToString() + "/" + currentUnitStats.unitMaxHealth.ToString();               
-                actionpoint.text = Mathf.RoundToInt(currentUnitStats.unitActionpoints).ToString();
+                if (currentUnitStats.unitCurrentHealth > 0)
+                {
+                    health.text = currentUnitStats.unitCurrentHealth.ToString() + "/" + currentUnitStats.unitMaxHealth.ToString();
+                    actionpoint.text = Mathf.RoundToInt(currentUnitStats.unitActionpoints).ToString();
+                }
             }
 
             if (currentUnitIndex == 2)
             {
                 selectedunit = 7;
                 UnitStats currentUnitStats = playerUnits[7].GetComponent<UnitStats>();
-                health.text = currentUnitStats.unitCurrentHealth.ToString() + "/" + currentUnitStats.unitMaxHealth.ToString();               
-                actionpoint.text = Mathf.RoundToInt(currentUnitStats.unitActionpoints).ToString();
+                if (currentUnitStats.unitCurrentHealth > 0)
+                {
+                    health.text = currentUnitStats.unitCurrentHealth.ToString() + "/" + currentUnitStats.unitMaxHealth.ToString();
+                    actionpoint.text = Mathf.RoundToInt(currentUnitStats.unitActionpoints).ToString();
+                }
             }
 
             if (currentUnitIndex == 3)
             {
                 selectedunit = 8;
                 UnitStats currentUnitStats = playerUnits[8].GetComponent<UnitStats>();
-                health.text = currentUnitStats.unitCurrentHealth.ToString() + "/" + currentUnitStats.unitMaxHealth.ToString();               
-                actionpoint.text = Mathf.RoundToInt(currentUnitStats.unitActionpoints).ToString();
+                if (currentUnitStats.unitCurrentHealth > 0)
+                {
+                    health.text = currentUnitStats.unitCurrentHealth.ToString() + "/" + currentUnitStats.unitMaxHealth.ToString();
+                    actionpoint.text = Mathf.RoundToInt(currentUnitStats.unitActionpoints).ToString();
+                }
             }
         }
         if (playerturnint == 4)
@@ -403,24 +443,33 @@ public class GameUi : MonoBehaviour
             {
                 selectedunit = 9;
                 UnitStats currentUnitStats = playerUnits[9].GetComponent<UnitStats>();
-                health.text = currentUnitStats.unitCurrentHealth.ToString() + "/" + currentUnitStats.unitMaxHealth.ToString();              
-                actionpoint.text = Mathf.RoundToInt(currentUnitStats.unitActionpoints).ToString();
+                if (currentUnitStats.unitCurrentHealth > 0)
+                {
+                    health.text = currentUnitStats.unitCurrentHealth.ToString() + "/" + currentUnitStats.unitMaxHealth.ToString();
+                    actionpoint.text = Mathf.RoundToInt(currentUnitStats.unitActionpoints).ToString();
+                }
             }
 
             if (currentUnitIndex == 2)
             {
                 selectedunit = 10;
                 UnitStats currentUnitStats = playerUnits[10].GetComponent<UnitStats>();
-                health.text = currentUnitStats.unitCurrentHealth.ToString() + "/" + currentUnitStats.unitMaxHealth.ToString();               
-                actionpoint.text = Mathf.RoundToInt(currentUnitStats.unitActionpoints).ToString();
+                if (currentUnitStats.unitCurrentHealth > 0)
+                {
+                    health.text = currentUnitStats.unitCurrentHealth.ToString() + "/" + currentUnitStats.unitMaxHealth.ToString();
+                    actionpoint.text = Mathf.RoundToInt(currentUnitStats.unitActionpoints).ToString();
+                }
             }
 
             if (currentUnitIndex == 3)
             {
                 UnitStats currentUnitStats = playerUnits[11].GetComponent<UnitStats>();
                 selectedunit = 11;
-                health.text = currentUnitStats.unitCurrentHealth.ToString() + "/" + currentUnitStats.unitMaxHealth.ToString();               
-                actionpoint.text = Mathf.RoundToInt(currentUnitStats.unitActionpoints).ToString();
+                if (currentUnitStats.unitCurrentHealth > 0)
+                {
+                    health.text = currentUnitStats.unitCurrentHealth.ToString() + "/" + currentUnitStats.unitMaxHealth.ToString();
+                    actionpoint.text = Mathf.RoundToInt(currentUnitStats.unitActionpoints).ToString();
+                }
             }
         }
 
@@ -436,5 +485,5 @@ public class GameUi : MonoBehaviour
             currentUnitStats.unitActionpoints = currentUnitStats.unitActionpoints - 3;
         }
     }
-
+   
 }

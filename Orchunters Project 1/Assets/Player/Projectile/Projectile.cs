@@ -8,10 +8,11 @@ public class Projectile : MonoBehaviour
     [SerializeField] private float speed;
     [SerializeField] private Rigidbody projectileBody;
     [SerializeField] private GameObject damageIndicatorsPrefab;
-
-
+    [SerializeField] UnitStats unitstats;
+    [SerializeField] GameUi ui;
     private bool isActive;
-    
+    public int damagemade;
+   
 
     private void Start()
     {
@@ -36,14 +37,17 @@ public class Projectile : MonoBehaviour
     }
 
     private void OnCollisionEnter(Collision collision)
-    {
+    {       
         Destroy(this.gameObject);
         GameObject damageIndicator = Instantiate(damageIndicatorsPrefab);
         damageIndicator.transform.position = collision.GetContact(0).point;
 
-
+        UnitStats currentUnitStats = collision.gameObject.GetComponent<UnitStats>();
+        damagemade = (Random.Range(currentUnitStats.unitDamageMin, currentUnitStats.unitDamageMax));
+        currentUnitStats.unitCurrentHealth = currentUnitStats.unitCurrentHealth - damagemade;
+                      
+        
     }
-
-
+   
 
 }

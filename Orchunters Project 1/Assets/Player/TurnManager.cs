@@ -10,8 +10,9 @@ public class TurnManager : MonoBehaviour
     [SerializeField] private PlayerTurn playerthree;
     [SerializeField] private PlayerTurn playerfour;
     [SerializeField] private float timeBetweenTurns;
-  
-    private bool turned;
+    [SerializeField] UnitStats unitstats;
+    [SerializeField] GameUi ui;
+      private bool turned;
     private int currentPlayerIndex;
     private bool waitingForNextTurn;
     private float turnDelay;
@@ -72,21 +73,46 @@ public class TurnManager : MonoBehaviour
         {
             currentPlayerIndex = 2;
             turned = true;
+            for (int i = 3; i <= 5; i++)
+            {
+                UnitStats currentUnitStats = ui.playerUnits[i].GetComponent<UnitStats>();
+                currentUnitStats.unitActionpoints = 10f;
+                currentUnitStats.defend = false;
+            }
+
         }
         if (currentPlayerIndex == 2 && (turned == false))
         {
             currentPlayerIndex = 3;
             turned = true;
+            for (int i = 6; i <= 8; i++)
+            {
+                UnitStats currentUnitStats = ui.playerUnits[i].GetComponent<UnitStats>();
+                currentUnitStats.unitActionpoints = 10f;
+                currentUnitStats.defend = false;
+            }
         }
         if (currentPlayerIndex == 3 && (turned == false))
         {
             currentPlayerIndex = 4;
             turned = true;
+            for (int i = 9; i <= 11; i++)
+            {
+                UnitStats currentUnitStats = ui.playerUnits[i].GetComponent<UnitStats>();
+                currentUnitStats.unitActionpoints = 10f;
+                currentUnitStats.defend = false;
+            }
         }
         if (currentPlayerIndex == 4 && (turned == false))
         {
             currentPlayerIndex = 1;
             turned = true;
+            for (int i = 0; i <= 2; i++)
+            {
+                UnitStats currentUnitStats = ui.playerUnits[i].GetComponent<UnitStats>();
+                currentUnitStats.unitActionpoints = 10f;
+                currentUnitStats.defend = false;
+            }
         }
 
 

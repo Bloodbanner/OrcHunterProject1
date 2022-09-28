@@ -47,6 +47,7 @@ public class CharacterWeapon : MonoBehaviour
         Vector3 force = transform.forward * 500f + transform.up * 100f;
         GameObject newProjectile = Instantiate(projectilePrefab, shootingStartPosition.position, Quaternion.Euler(force));
         newProjectile.GetComponent<Projectile>().Initialize(force);
+        
         yield return new WaitForSeconds(4f);
         isAttacking = false;
         playerMovement.canmove = true;

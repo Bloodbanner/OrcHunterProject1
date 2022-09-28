@@ -78,6 +78,102 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!136 &6161301682971463480
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2309833223975065420}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.07348624
+  m_Height: 1.1153281
+  m_Direction: 1
+  m_Center: {x: -0.0050895796, y: -0.085447066, z: 0.0013289149}
+--- !u!114 &-6775760851883851778
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2309833223975065420}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: becd6f62a608155498310fc5cf4e7bf8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Player1flag: {fileID: 21300000, guid: db169a01202807340a94fc8605260f3f, type: 3}
+  Player2flag: {fileID: 21300000, guid: 934221a6c55c6a042aea79c94be15165, type: 3}
+  Player3flag: {fileID: 21300000, guid: b4cff3adf80890645beb3b3c51356698, type: 3}
+  Player4flag: {fileID: 21300000, guid: f5c722b8329feb841a79aae8df5f8818, type: 3}
+  playerTurnFlag: {fileID: 0}
+  endtextbutton: {fileID: 0}
+  unit1Deadimage: {fileID: 0}
+  unit2Deadimage: {fileID: 0}
+  unit3Deadimage: {fileID: 0}
+  unitDead: {fileID: 0}
+  endTurnButton: {fileID: 0}
+  AttackButton: {fileID: 0}
+  DefendButton: {fileID: 0}
+  unit1Button: {fileID: 0}
+  unit2Button: {fileID: 0}
+  unit3Button: {fileID: 0}
+  health: {fileID: 0}
+  actionpoint: {fileID: 0}
+  playerturnname: {fileID: 0}
+  playerUnits:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  cameraplayer1unit1: {fileID: 0}
+  cameraplayer1unit2: {fileID: 0}
+  cameraplayer1unit3: {fileID: 0}
+  cameraplayer2unit1: {fileID: 0}
+  cameraplayer2unit2: {fileID: 0}
+  cameraplayer2unit3: {fileID: 0}
+  cameraplayer3unit1: {fileID: 0}
+  cameraplayer3unit2: {fileID: 0}
+  cameraplayer3unit3: {fileID: 0}
+  cameraplayer4unit1: {fileID: 0}
+  cameraplayer4unit2: {fileID: 0}
+  cameraplayer4unit3: {fileID: 0}
+  defendshield: {fileID: 7204113271996786578, guid: 79acc4ab4aaaa734a83388632f6c59f2, type: 3}
+  attack: 0
+  isAttackingDontAllowAttacking: 1
+  unitStats: {fileID: 0}
+  characterWeapon: {fileID: 0}
+  currentUnitIndex: 0
+  currentPlayerIndex: 0
+--- !u!114 &-6617253399212784641
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2309833223975065420}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 303640af88fa7694c979fe93f90a2fde, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unitMaxHealth: 0
+  unitCurrentHealth: 0
+  unitDamageMin: 0
+  unitDamageMax: 0
+  unitActionpoints: 0
+  unit: {fileID: 0}
+  defend: 0
+  projectile: {fileID: 0}
 --- !u!114 &3941262897173519340
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -92,4 +188,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 1
   projectileBody: {fileID: -1212944007131161458}
-  damageIndicatorsPrefab: {fileID: 0}
+  damageIndicatorsPrefab: {fileID: 7204113271996786578, guid: 79acc4ab4aaaa734a83388632f6c59f2, type: 3}
+  unitstats: {fileID: -6617253399212784641}
+  ui: {fileID: -6775760851883851778}
+  floatingDamage: {fileID: 6220094717319327946, guid: 2dce6eeaae48a9f43bc7ec28d32ca392, type: 3}
