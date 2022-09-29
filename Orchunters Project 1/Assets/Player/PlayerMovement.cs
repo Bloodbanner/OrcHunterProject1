@@ -38,10 +38,12 @@ public class PlayerMovement : MonoBehaviour
 
                         animatorRun.SetBool("Run", true);
                         unitstats.unitActionpoints = unitstats.unitActionpoints - Time.deltaTime;
+                        
                     }
                     if (Input.GetKeyUp(KeyCode.W))
                     {
                         animatorRun.SetBool("Run", false);
+                        return;
                     }
 
                     if (Input.GetKey(KeyCode.S))
@@ -49,20 +51,24 @@ public class PlayerMovement : MonoBehaviour
                         m_Rigidbody.velocity = transform.forward *-1 * m_Speed * Time.deltaTime;
                         animatorRun.SetBool("Back", true);
                         unitstats.unitActionpoints = unitstats.unitActionpoints - Time.deltaTime;
+                        
                     }
                     if (Input.GetKeyUp(KeyCode.S))
                     {
                         animatorRun.SetBool("Back", false);
+                        return;
                     }
 
                     if (Input.GetKey(KeyCode.A))
                     {
                         this.transform.Rotate(Vector3.up, -0.8f);
+                        
                     }
 
                     if (Input.GetKey(KeyCode.D))
                     {
                         this.transform.Rotate(Vector3.up, 0.8f);
+                        
                     }
 
                     if (unitstats.unitActionpoints <= 0)

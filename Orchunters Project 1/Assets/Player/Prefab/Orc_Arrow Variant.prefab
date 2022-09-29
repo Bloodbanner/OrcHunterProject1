@@ -123,6 +123,8 @@ MonoBehaviour:
   health: {fileID: 0}
   actionpoint: {fileID: 0}
   playerturnname: {fileID: 0}
+  arrowPowertext: {fileID: 0}
+  arrowHeightext: {fileID: 0}
   playerUnits:
   - {fileID: 0}
   - {fileID: 0}
@@ -135,6 +137,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  combatlog: {fileID: 0}
   cameraplayer1unit1: {fileID: 0}
   cameraplayer1unit2: {fileID: 0}
   cameraplayer1unit3: {fileID: 0}
@@ -149,9 +152,12 @@ MonoBehaviour:
   cameraplayer4unit3: {fileID: 0}
   defendshield: {fileID: 7204113271996786578, guid: 79acc4ab4aaaa734a83388632f6c59f2, type: 3}
   attack: 0
+  selectedunit: 0
   isAttackingDontAllowAttacking: 1
+  projectile: {fileID: 0}
   unitStats: {fileID: 0}
   characterWeapon: {fileID: 0}
+  Wichunit: 0
   currentUnitIndex: 0
   currentPlayerIndex: 0
 --- !u!114 &-6617253399212784641
@@ -188,7 +194,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 1
   projectileBody: {fileID: -1212944007131161458}
-  damageIndicatorsPrefab: {fileID: 7204113271996786578, guid: 79acc4ab4aaaa734a83388632f6c59f2, type: 3}
+  damageIndicatorsPrefab: {fileID: 3239202695998579771, guid: 8801177a8bb155e42b7d2e177c477aa9, type: 3}
   unitstats: {fileID: -6617253399212784641}
   ui: {fileID: -6775760851883851778}
-  floatingDamage: {fileID: 6220094717319327946, guid: 2dce6eeaae48a9f43bc7ec28d32ca392, type: 3}
+  damagemade: 0

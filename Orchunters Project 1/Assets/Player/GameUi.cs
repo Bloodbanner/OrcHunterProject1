@@ -26,6 +26,8 @@ public class GameUi : MonoBehaviour
     [SerializeField] private TextMeshProUGUI health;    
     [SerializeField] private TextMeshProUGUI actionpoint;
     [SerializeField] private TextMeshProUGUI playerturnname;
+    [SerializeField] private TextMeshProUGUI arrowPowertext;
+    [SerializeField] private TextMeshProUGUI arrowHeightext;
     public List<GameObject> playerUnits = new List<GameObject>();
     [SerializeField] public TextMeshProUGUI combatlog;
 
@@ -46,7 +48,7 @@ public class GameUi : MonoBehaviour
     public GameObject defendshield;
     private int cameraInt = 0;
     public bool attack;
-    private int selectedunit;
+    public int selectedunit;
     public bool isAttackingDontAllowAttacking = true;
 
 
@@ -54,7 +56,7 @@ public class GameUi : MonoBehaviour
     [SerializeField] Projectile projectile;
     [SerializeField] UnitStats unitStats;
     [SerializeField] CharacterWeapon characterWeapon;
-    private int Wichunit;
+    public int Wichunit;
     public int currentUnitIndex;
     public int currentPlayerIndex;
     private int playerturnint;
@@ -97,94 +99,64 @@ public class GameUi : MonoBehaviour
             {
                 Wichunit = 0;
             }
-
-            if (playerturnint == 2 && currentUnitIndex == 1)
-            {
-                Wichunit = 3;
-
-            }
-
-            if (playerturnint == 3 && currentUnitIndex == 1)
-            {
-                Wichunit = 6;
-            }
-
-            if (playerturnint == 4 && currentUnitIndex == 1)
-            {
-                Wichunit = 9;
-            }
-
-
             if (playerturnint == 1 && currentUnitIndex == 2)
             {
                 Wichunit = 1;
             }
-
+            if (playerturnint == 1 && currentUnitIndex == 3)
+            {
+                Wichunit = 2;
+            }
+            if (playerturnint == 2 && currentUnitIndex == 1)
+            {
+                Wichunit = 3;
+            }
             if (playerturnint == 2 && currentUnitIndex == 2)
             {
                 Wichunit = 4;
-
             }
-
+            if (playerturnint == 2 && currentUnitIndex == 3)
+            {
+                Wichunit = 5;
+            }
+            if (playerturnint == 3 && currentUnitIndex == 1)
+            {
+                Wichunit = 6;
+            }
             if (playerturnint == 3 && currentUnitIndex == 2)
             {
                 Wichunit = 7;
             }
-
-            if (playerturnint == 4 && currentUnitIndex == 2)
-            {
-                Wichunit = 10;
-            }
-            if (playerturnint == 1 && currentUnitIndex == 3)
-            {
-                Wichunit = 1;
-            }
-
-            if (playerturnint == 2 && currentUnitIndex == 3)
-            {
-                Wichunit = 5;
-
-            }
-
             if (playerturnint == 3 && currentUnitIndex == 3)
             {
                 Wichunit = 8;
             }
-
+            if (playerturnint == 4 && currentUnitIndex == 1)
+            {
+                Wichunit = 9;
+            }
+            if (playerturnint == 4 && currentUnitIndex == 2)
+            {
+                Wichunit = 10;
+            }
             if (playerturnint == 4 && currentUnitIndex == 3)
             {
                 Wichunit = 11;
             }
 
+
+
             UnitStats currentUnitStats = playerUnits[Wichunit].GetComponent<UnitStats>();
 
-            if (Wichunit == 0 || Wichunit == 3 || Wichunit == 6 || Wichunit == 9)
+            if (currentUnitStats.unitActionpoints >= 2)
             {
-                if (currentUnitStats.unitActionpoints >= 2)
+
+                if (playerUnits[Wichunit].GetComponent<GameUi>().isAttackingDontAllowAttacking == true)
                 {
-
-                    if (isAttackingDontAllowAttacking == true)
-                    {
-                        attack = true;
-                        currentUnitStats.unitActionpoints = currentUnitStats.unitActionpoints - 2;
-                        isAttackingDontAllowAttacking = false;
-                    }
+                    playerUnits[Wichunit].GetComponent<GameUi>().attack = true;
+                    currentUnitStats.unitActionpoints = currentUnitStats.unitActionpoints - 2;
+                    playerUnits[Wichunit].GetComponent<GameUi>().isAttackingDontAllowAttacking = false;
                 }
-
-            }
-            if (Wichunit == 1 || Wichunit == 4 || Wichunit == 7 || Wichunit == 10 || Wichunit == 2 || Wichunit == 5 || Wichunit == 8 || Wichunit == 11)
-            {
-                if (currentUnitStats.unitActionpoints >= 2)
-                {
-
-                    if (isAttackingDontAllowAttacking == true)
-                    {
-                        attack = true;
-                        currentUnitStats.unitActionpoints = currentUnitStats.unitActionpoints - 2;
-                        isAttackingDontAllowAttacking = false;
-                    }
-                }
-
             }
 
         }
@@ -327,8 +299,10 @@ public class GameUi : MonoBehaviour
                 if (currentUnitStats.unitCurrentHealth > 0)
                 {
                     health.text = currentUnitStats.unitCurrentHealth.ToString() + "/" + currentUnitStats.unitMaxHealth.ToString();
-                    actionpoint.text = Mathf.RoundToInt(currentUnitStats.unitActionpoints).ToString();
-                   
+                    actionpoint.text = currentUnitStats.unitActionpoints.ToString("F1");
+                    arrowPowertext.text = "Arrow Power: " + Mathf.RoundToInt(currentUnitStats.GetComponent<CharacterWeapon>().power).ToString();
+                    arrowHeightext.text = "Arrow Height: " + Mathf.RoundToInt(currentUnitStats.GetComponent<CharacterWeapon>().height).ToString();
+
                 }
                 else     
                 {
@@ -344,8 +318,10 @@ public class GameUi : MonoBehaviour
                 if (currentUnitStats.unitCurrentHealth > 0)
                 {
                     health.text = currentUnitStats.unitCurrentHealth.ToString() + "/" + currentUnitStats.unitMaxHealth.ToString();
-                    actionpoint.text = Mathf.RoundToInt(currentUnitStats.unitActionpoints).ToString();
-                  
+                    actionpoint.text = currentUnitStats.unitActionpoints.ToString("F1");
+                    arrowPowertext.text = "Arrow Power: " + Mathf.RoundToInt(currentUnitStats.GetComponent<CharacterWeapon>().power).ToString();
+                    arrowHeightext.text = "Arrow Height: " + Mathf.RoundToInt(currentUnitStats.GetComponent<CharacterWeapon>().height).ToString();
+
                 }
                 else
                 {
@@ -362,9 +338,11 @@ public class GameUi : MonoBehaviour
                 if (currentUnitStats.unitCurrentHealth > 0)
                 {
                     health.text = currentUnitStats.unitCurrentHealth.ToString() + "/" + currentUnitStats.unitMaxHealth.ToString();
-                    actionpoint.text = Mathf.RoundToInt(currentUnitStats.unitActionpoints).ToString();
+                    actionpoint.text = currentUnitStats.unitActionpoints.ToString("F1");
+                    arrowPowertext.text = "Arrow Power: " + Mathf.RoundToInt(currentUnitStats.GetComponent<CharacterWeapon>().power).ToString();
+                    arrowHeightext.text = "Arrow Height: " + Mathf.RoundToInt(currentUnitStats.GetComponent<CharacterWeapon>().height).ToString();
                 }
-                   
+
             }
         }
         if (playerturnint == 2)
@@ -376,7 +354,9 @@ public class GameUi : MonoBehaviour
                 if (currentUnitStats.unitCurrentHealth > 0)
                 {
                     health.text = currentUnitStats.unitCurrentHealth.ToString() + "/" + currentUnitStats.unitMaxHealth.ToString();
-                    actionpoint.text = Mathf.RoundToInt(currentUnitStats.unitActionpoints).ToString();
+                    actionpoint.text = currentUnitStats.unitActionpoints.ToString("F1");
+                    arrowPowertext.text = "Arrow Power: " + Mathf.RoundToInt(currentUnitStats.GetComponent<CharacterWeapon>().power).ToString();
+                    arrowHeightext.text = "Arrow Height: " + Mathf.RoundToInt(currentUnitStats.GetComponent<CharacterWeapon>().height).ToString();
                 }
             }
 
@@ -387,7 +367,9 @@ public class GameUi : MonoBehaviour
                 if (currentUnitStats.unitCurrentHealth > 0)
                 {
                     health.text = currentUnitStats.unitCurrentHealth.ToString() + "/" + currentUnitStats.unitMaxHealth.ToString();
-                    actionpoint.text = Mathf.RoundToInt(currentUnitStats.unitActionpoints).ToString();
+                    actionpoint.text = currentUnitStats.unitActionpoints.ToString("F1");
+                    arrowPowertext.text = "Arrow Power: " + Mathf.RoundToInt(currentUnitStats.GetComponent<CharacterWeapon>().power).ToString();
+                    arrowHeightext.text = "Arrow Height: " + Mathf.RoundToInt(currentUnitStats.GetComponent<CharacterWeapon>().height).ToString();
                 }
             }
 
@@ -398,7 +380,9 @@ public class GameUi : MonoBehaviour
                 if (currentUnitStats.unitCurrentHealth > 0)
                 {
                     health.text = currentUnitStats.unitCurrentHealth.ToString() + "/" + currentUnitStats.unitMaxHealth.ToString();
-                    actionpoint.text = Mathf.RoundToInt(currentUnitStats.unitActionpoints).ToString();
+                    actionpoint.text = currentUnitStats.unitActionpoints.ToString("F1");
+                    arrowPowertext.text = "Arrow Power: " + Mathf.RoundToInt(currentUnitStats.GetComponent<CharacterWeapon>().power).ToString();
+                    arrowHeightext.text = "Arrow Height: " + Mathf.RoundToInt(currentUnitStats.GetComponent<CharacterWeapon>().height).ToString();
                 }
             }
         }
@@ -411,7 +395,9 @@ public class GameUi : MonoBehaviour
                 if (currentUnitStats.unitCurrentHealth > 0)
                 {
                     health.text = currentUnitStats.unitCurrentHealth.ToString() + "/" + currentUnitStats.unitMaxHealth.ToString();
-                    actionpoint.text = Mathf.RoundToInt(currentUnitStats.unitActionpoints).ToString();
+                    actionpoint.text = currentUnitStats.unitActionpoints.ToString("F1");
+                    arrowPowertext.text = "Arrow Power: " + Mathf.RoundToInt(currentUnitStats.GetComponent<CharacterWeapon>().power).ToString();
+                    arrowHeightext.text = "Arrow Height: " + Mathf.RoundToInt(currentUnitStats.GetComponent<CharacterWeapon>().height).ToString();
                 }
             }
 
@@ -422,7 +408,9 @@ public class GameUi : MonoBehaviour
                 if (currentUnitStats.unitCurrentHealth > 0)
                 {
                     health.text = currentUnitStats.unitCurrentHealth.ToString() + "/" + currentUnitStats.unitMaxHealth.ToString();
-                    actionpoint.text = Mathf.RoundToInt(currentUnitStats.unitActionpoints).ToString();
+                    actionpoint.text = currentUnitStats.unitActionpoints.ToString("F1");
+                    arrowPowertext.text = "Arrow Power: " + Mathf.RoundToInt(currentUnitStats.GetComponent<CharacterWeapon>().power).ToString();
+                    arrowHeightext.text = "Arrow Height: " + Mathf.RoundToInt(currentUnitStats.GetComponent<CharacterWeapon>().height).ToString();
                 }
             }
 
@@ -433,7 +421,9 @@ public class GameUi : MonoBehaviour
                 if (currentUnitStats.unitCurrentHealth > 0)
                 {
                     health.text = currentUnitStats.unitCurrentHealth.ToString() + "/" + currentUnitStats.unitMaxHealth.ToString();
-                    actionpoint.text = Mathf.RoundToInt(currentUnitStats.unitActionpoints).ToString();
+                    actionpoint.text = currentUnitStats.unitActionpoints.ToString("F1");
+                    arrowPowertext.text = "Arrow Power: " + Mathf.RoundToInt(currentUnitStats.GetComponent<CharacterWeapon>().power).ToString();
+                    arrowHeightext.text = "Arrow Height: " + Mathf.RoundToInt(currentUnitStats.GetComponent<CharacterWeapon>().height).ToString();
                 }
             }
         }
@@ -446,7 +436,9 @@ public class GameUi : MonoBehaviour
                 if (currentUnitStats.unitCurrentHealth > 0)
                 {
                     health.text = currentUnitStats.unitCurrentHealth.ToString() + "/" + currentUnitStats.unitMaxHealth.ToString();
-                    actionpoint.text = Mathf.RoundToInt(currentUnitStats.unitActionpoints).ToString();
+                    actionpoint.text = currentUnitStats.unitActionpoints.ToString("F1");
+                    arrowPowertext.text = "Arrow Power: " + Mathf.RoundToInt(currentUnitStats.GetComponent<CharacterWeapon>().power).ToString();
+                    arrowHeightext.text = "Arrow Height: " + Mathf.RoundToInt(currentUnitStats.GetComponent<CharacterWeapon>().height).ToString();
                 }
             }
 
@@ -457,7 +449,9 @@ public class GameUi : MonoBehaviour
                 if (currentUnitStats.unitCurrentHealth > 0)
                 {
                     health.text = currentUnitStats.unitCurrentHealth.ToString() + "/" + currentUnitStats.unitMaxHealth.ToString();
-                    actionpoint.text = Mathf.RoundToInt(currentUnitStats.unitActionpoints).ToString();
+                    actionpoint.text = currentUnitStats.unitActionpoints.ToString("F1");
+                    arrowPowertext.text = "Arrow Power: " + Mathf.RoundToInt(currentUnitStats.GetComponent<CharacterWeapon>().power).ToString();
+                    arrowHeightext.text = "Arrow Height: " + Mathf.RoundToInt(currentUnitStats.GetComponent<CharacterWeapon>().height).ToString();
                 }
             }
 
@@ -468,7 +462,9 @@ public class GameUi : MonoBehaviour
                 if (currentUnitStats.unitCurrentHealth > 0)
                 {
                     health.text = currentUnitStats.unitCurrentHealth.ToString() + "/" + currentUnitStats.unitMaxHealth.ToString();
-                    actionpoint.text = Mathf.RoundToInt(currentUnitStats.unitActionpoints).ToString();
+                    actionpoint.text = currentUnitStats.unitActionpoints.ToString("F1");
+                    arrowPowertext.text = "Arrow Power: " + Mathf.RoundToInt(currentUnitStats.GetComponent<CharacterWeapon>().power).ToString();
+                    arrowHeightext.text = "Arrow Height: " + Mathf.RoundToInt(currentUnitStats.GetComponent<CharacterWeapon>().height).ToString();
                 }
             }
         }

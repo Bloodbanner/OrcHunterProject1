@@ -41,10 +41,22 @@ public class Projectile : MonoBehaviour
         Destroy(this.gameObject);
         GameObject damageIndicator = Instantiate(damageIndicatorsPrefab);
         damageIndicator.transform.position = collision.GetContact(0).point;
-
-        UnitStats currentUnitStats = collision.gameObject.GetComponent<UnitStats>();
-        damagemade = (Random.Range(currentUnitStats.unitDamageMin, currentUnitStats.unitDamageMax));
-        currentUnitStats.unitCurrentHealth = currentUnitStats.unitCurrentHealth - damagemade;
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            UnitStats currentUnitStats = collision.gameObject.GetComponent<UnitStats>();
+            if (currentUnitStats.defend == true)
+            {
+                damagemade = (Random.Range(currentUnitStats.unitDamageMin, currentUnitStats.unitDamageMax));
+                currentUnitStats.unitCurrentHealth = currentUnitStats.unitCurrentHealth - damagemade/2;
+            }
+            else if (currentUnitStats.defend == false)
+            {
+                damagemade = (Random.Range(currentUnitStats.unitDamageMin, currentUnitStats.unitDamageMax));
+                currentUnitStats.unitCurrentHealth = currentUnitStats.unitCurrentHealth - damagemade;
+            }
+            
+        }
+        
                       
         
     }

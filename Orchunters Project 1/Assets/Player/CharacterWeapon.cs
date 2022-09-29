@@ -11,7 +11,9 @@ public class CharacterWeapon : MonoBehaviour
     public GameUi ui;
     [SerializeField] private Animator animator;
     [SerializeField] PlayerMovement playerMovement;
-
+    public GameObject whosattacking;
+    public float power = 500f;
+    public float height = 100f;
     private void Start()
     {
        
@@ -20,38 +22,91 @@ public class CharacterWeapon : MonoBehaviour
    
     private void Update()
     {
-
+        
         bool isPlayerTurn = playerTurn.IsPlayerTurn();
-        if (ui.attack == true)
+        if (whosattacking.GetComponent<GameUi>().attack == true)
         {
-            if (isPlayerTurn && ui.currentUnitIndex == 1)
+            
+            if (whosattacking.GetComponent<CharacterWeapon>().isAttacking == false)
             {
-                if (isAttacking == false)
-                {
-                    ui.attack = false;
-                    animator.SetTrigger("Attack");
-                    StartCoroutine(Test());
-                    isAttacking = true;
-                    playerMovement.canmove = false;
+                whosattacking.GetComponent<GameUi>().attack = false;
+                animator.SetTrigger("Attack");
+                StartCoroutine(Test());
+                whosattacking.GetComponent<CharacterWeapon>().isAttacking = true;
+                playerMovement.canmove = false;
 
-                }
             }
 
+
         }
+        if (Input.GetKey(KeyCode.Q))
+        {
+            ui.playerUnits[ui.selectedunit].GetComponent<CharacterWeapon>().power = ui.playerUnits[ui.selectedunit].GetComponent<CharacterWeapon>().power + 25f * Time.deltaTime;
+           
+            if (ui.playerUnits[ui.selectedunit].GetComponent<CharacterWeapon>().power < 50)
+            {
+                ui.playerUnits[ui.selectedunit].GetComponent<CharacterWeapon>().power = 50f;
+            }
+            if (ui.playerUnits[ui.selectedunit].GetComponent<CharacterWeapon>().power > 1000f)
+            {
+                ui.playerUnits[ui.selectedunit].GetComponent<CharacterWeapon>().power = 1000f;
+            }
+        }
+        if (Input.GetKey(KeyCode.Z))
+        {
+            ui.playerUnits[ui.selectedunit].GetComponent<CharacterWeapon>().power = ui.playerUnits[ui.selectedunit].GetComponent<CharacterWeapon>().power - 25f * Time.deltaTime;
+           
+            if (ui.playerUnits[ui.selectedunit].GetComponent<CharacterWeapon>().power < 50)
+            {
+                ui.playerUnits[ui.selectedunit].GetComponent<CharacterWeapon>().power = 50f;
+            }
+            if (ui.playerUnits[ui.selectedunit].GetComponent<CharacterWeapon>().power > 1000f)
+            {
+                ui.playerUnits[ui.selectedunit].GetComponent<CharacterWeapon>().power = 1000f;
+            }
+        }
+        if (Input.GetKey(KeyCode.E))
+        {
+            ui.playerUnits[ui.selectedunit].GetComponent<CharacterWeapon>().height = ui.playerUnits[ui.selectedunit].GetComponent<CharacterWeapon>().height + 10f * Time.deltaTime;
+            
+            if (ui.playerUnits[ui.selectedunit].GetComponent<CharacterWeapon>().height < 5)
+            {
+                ui.playerUnits[ui.selectedunit].GetComponent<CharacterWeapon>().height = 5f;
+            }
+            if (ui.playerUnits[ui.selectedunit].GetComponent<CharacterWeapon>().height > 500f)
+            {
+                ui.playerUnits[ui.selectedunit].GetComponent<CharacterWeapon>().height = 500f;
+            }
+        }
+        if (Input.GetKey(KeyCode.C))
+        {
+            ui.playerUnits[ui.selectedunit].GetComponent<CharacterWeapon>().height = ui.playerUnits[ui.selectedunit].GetComponent<CharacterWeapon>().height - 10f * Time.deltaTime;
+           
+            if (ui.playerUnits[ui.selectedunit].GetComponent<CharacterWeapon>().height < 5)
+            {
+                ui.playerUnits[ui.selectedunit].GetComponent<CharacterWeapon>().height = 5f;
+            }
+            if (ui.playerUnits[ui.selectedunit].GetComponent<CharacterWeapon>().height > 500f)
+            {
+                ui.playerUnits[ui.selectedunit].GetComponent<CharacterWeapon>().height = 500f;
+            }
+        }
+
+
     }
 
 
     IEnumerator Test()
     {
         yield return new WaitForSeconds(0.5f);
-        Vector3 force = transform.forward * 500f + transform.up * 100f;
+        Vector3 force = transform.forward * whosattacking.GetComponent<CharacterWeapon>().power + transform.up * whosattacking.GetComponent<CharacterWeapon>().height;
         GameObject newProjectile = Instantiate(projectilePrefab, shootingStartPosition.position, Quaternion.Euler(force));
         newProjectile.GetComponent<Projectile>().Initialize(force);
         
-        yield return new WaitForSeconds(4f);
-        isAttacking = false;
+        yield return new WaitForSeconds(3f);
+        whosattacking.GetComponent<CharacterWeapon>().isAttacking = false;
         playerMovement.canmove = true;
-        ui.isAttackingDontAllowAttacking = true;
+        whosattacking.GetComponent<GameUi>().isAttackingDontAllowAttacking = true;
     }
 
 
